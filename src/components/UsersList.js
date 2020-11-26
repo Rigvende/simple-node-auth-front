@@ -22,10 +22,6 @@ export const UsersList = ({ users }) => {
         } catch (err) { }
     };
 
-    if (!users.length) {
-        return <h3 className="center">No users found...</h3>
-    }
-
     return (
         <table className="highlight centered">
             <thead>

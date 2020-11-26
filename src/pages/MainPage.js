@@ -9,7 +9,7 @@ export const MainPage = () => {
     const { token } = useContext(AuthContext);
     const message = useMessage();
     const { loading, error, clearError, request } = useHttp();
-    const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState(null);
 
     useEffect(() => {
         message(error);
@@ -24,7 +24,7 @@ export const MainPage = () => {
     }, [request, token]);
 
     useEffect(() => {
-        getUsers();
+        getUsers();       
     }, [getUsers]);
 
     if (loading) {
@@ -33,7 +33,7 @@ export const MainPage = () => {
 
     return (
         <>
-            { !loading && <UsersList users={users} />}
+            { users ? !loading && <UsersList users={users} /> : null}
         </>
     )
 };
