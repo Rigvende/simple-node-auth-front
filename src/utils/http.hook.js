@@ -46,7 +46,7 @@ export const useHttp = () => {
                 setError(err.message);
                 throw err;
             }
-        }, [login, auth, history, SERVER_HOST]);
+        }, [login, auth, history, REACT_APP_SERVER_HOST]);
 
     const clearError = useCallback(() => setError(null), []);
 
