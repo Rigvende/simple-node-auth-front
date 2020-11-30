@@ -23,7 +23,7 @@ export const useHttp = () => {
                     headers['Content-Type'] = 'application/json';
                 }
 
-                const response = await fetch(`${REACT_APP_SERVER_HOST}` + url, { method, body, headers, mode: 'cors', credentials: 'include' });
+                const response = await fetch(`${REACT_APP_SERVER_HOST}` + url, { method, body, headers, mode: 'no-cors' });
                 const data = await response.json();
 
                 if (!response.ok) {
