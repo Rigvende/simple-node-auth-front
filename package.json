@@ -26,6 +26,7 @@
       "react-app/jest"
     ]
   },
+  "proxy": "https://simplenodeauthserver.herokuapp.com",
   "browserslist": {
     "production": [
       ">0.2%",
