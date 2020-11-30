@@ -12,7 +12,7 @@ export const useHttp = () => {
     const history = useHistory();
 
     // dotenv.config();
-    const { SERVER_HOST } = process.env;
+    const { REACT_APP_SERVER_HOST } = process.env;
 
     const request = useCallback(
         async (url, method = 'GET', body = null, headers = {}) => {
@@ -22,9 +22,9 @@ export const useHttp = () => {
                     body = JSON.stringify(body);
                     headers['Content-Type'] = 'application/json';
                 }
-                console.log(SERVER_HOST);
+                console.log(REACT_APP_SERVER_HOST);
                 console.log(url);
-                const response = await fetch(`${SERVER_HOST}` + url, { method, body, headers });
+                const response = await fetch(`${REACT_APP_SERVER_HOST}` + url, { method, body, headers });
                 const data = await response.json();
 
                 if (!response.ok) {
