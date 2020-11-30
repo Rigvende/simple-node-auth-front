@@ -2,7 +2,7 @@ import { useCallback, useState, useContext } from 'react';
 import { useAuth } from './auth.hook';
 import { AuthContext } from '../context/AuthContext';
 import { useHistory } from 'react-router-dom';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 
 export const useHttp = () => {
     const [loading, setLoading] = useState(false);
@@ -11,7 +11,7 @@ export const useHttp = () => {
     const auth = useContext(AuthContext);
     const history = useHistory();
 
-    dotenv.config();
+    // dotenv.config();
     const { SERVER_HOST } = process.env;
 
     const request = useCallback(
@@ -46,7 +46,7 @@ export const useHttp = () => {
                 setError(err.message);
                 throw err;
             }
-        }, [login, auth, history]);
+        }, [login, auth, history, SERVER_HOST]);
 
     const clearError = useCallback(() => setError(null), []);
 
