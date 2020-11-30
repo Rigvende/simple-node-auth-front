@@ -20,7 +20,6 @@ export const useHttp = () => {
                 const REQUEST = {
                     method, body: body ? JSON.stringify(body) : null,
                     headers: { 'Content-Type': 'application/json' },
-                    mode: 'no-cors'
                 };
 
                 const response = await fetch(URL, REQUEST);
