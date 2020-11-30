@@ -20,7 +20,7 @@ export const useHttp = () => {
                     body = JSON.stringify(body);
                     headers['Content-Type'] = 'application/json';
                 }
-                const response = await fetch(url, { method, body, headers });
+                const response = await fetch(`${process.env.SERVER_HOST}` + url, { method, body, headers });
                 const data = await response.json();
 
                 if (!response.ok) {
