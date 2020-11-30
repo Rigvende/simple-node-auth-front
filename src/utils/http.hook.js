@@ -19,10 +19,10 @@ export const useHttp = () => {
                 const URL = REACT_APP_SERVER_HOST + url;
                 const REQUEST = {
                     method, body: body ? JSON.stringify(body) : null,
-                    headers: { 'Content-Type': 'application/json' }};
-                    console.log("AAA " + JSON.stringify(body));
+                    headers: { 'Content-Type': 'application/json' }
+                };
+
                 const response = await fetch(URL, REQUEST);
-                console.log(response);
                 const data = await response.json();
 
                 if (!response.ok) {
@@ -40,7 +40,6 @@ export const useHttp = () => {
                 setLoading(false);
                 return data;
             } catch (err) {
-                console.log(err);
                 setLoading(false);
                 setError(err.message);
                 throw err;
