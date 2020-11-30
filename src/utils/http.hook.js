@@ -16,14 +16,13 @@ export const useHttp = () => {
         async (url, method = 'GET', body = null, headers = {}) => {
             setLoading(true);
             try {
-                if (body) {
-                    body = JSON.stringify(body);
-                    headers['Content-Type'] = 'application/json';
-                }
-
                 const URL = REACT_APP_SERVER_HOST + url;
-                const REQEUST = { method, body, headers, mode: 'no-cors' };
-                const response = await fetch(URL, REQEUST);
+                const REQUEST = {
+                    method, body: body ? JSON.stringify(body) : null,
+                    headers: { 'Content-Type': 'application/json' }, mode: 'no-cors'
+                };
+
+                const response = await fetch(URL, REQUEST);
                 console.log(response);
                 const data = await response.json();
 
