@@ -3,7 +3,6 @@ import { useAuth } from './auth.hook';
 import { AuthContext } from '../context/AuthContext';
 import { useHistory } from 'react-router-dom';
 import dotenv from 'dotenv';
-dotenv.config();
 
 export const useHttp = () => {
     const [loading, setLoading] = useState(false);
@@ -11,6 +10,9 @@ export const useHttp = () => {
     const { login } = useAuth();
     const auth = useContext(AuthContext);
     const history = useHistory();
+
+    dotenv.config();
+    const { SERVER_HOST } = process.env;
 
     const request = useCallback(
         async (url, method = 'GET', body = null, headers = {}) => {
@@ -20,9 +22,9 @@ export const useHttp = () => {
                     body = JSON.stringify(body);
                     headers['Content-Type'] = 'application/json';
                 }
-                console.log(process.env.SERVER_HOST);
+                console.log(SERVER_HOST);
                 console.log(url);
-                const response = await fetch(url, { method, body, headers });
+                const response = await fetch(`${SERVER_HOST}` + url, { method, body, headers });
                 const data = await response.json();
 
                 if (!response.ok) {
