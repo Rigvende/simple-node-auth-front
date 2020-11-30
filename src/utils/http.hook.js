@@ -24,6 +24,7 @@ export const useHttp = () => {
                 const URL = REACT_APP_SERVER_HOST + url;
                 const REQEUST = { method, body, headers, mode: 'no-cors' };
                 const response = await fetch(URL, REQEUST);
+                console.log(response);
                 const data = await response.json();
 
                 if (!response.ok) {
