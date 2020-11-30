@@ -19,7 +19,8 @@ export const useHttp = () => {
                 const URL = REACT_APP_SERVER_HOST + url;
                 const REQUEST = {
                     method, body: body ? JSON.stringify(body) : null,
-                    headers: { 'Content-Type': 'application/json' }
+                    headers: { 'Content-Type': 'application/json' },
+                    mode: 'no-cors'
                 };
 
                 const response = await fetch(URL, REQUEST);
