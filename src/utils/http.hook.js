@@ -22,7 +22,7 @@ export const useHttp = () => {
                 }
                 console.log(process.env.SERVER_HOST);
                 console.log(url);
-                const response = await fetch(`${process.env.SERVER_HOST}` + url, { method, body, headers });
+                const response = await fetch(url, { method, body, headers });
                 const data = await response.json();
 
                 if (!response.ok) {
