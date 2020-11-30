@@ -20,7 +20,7 @@ export const useHttp = () => {
                 const REQUEST = {
                     method, body: body ? JSON.stringify(body) : null,
                     headers: { 'Content-Type': 'application/json' }};
-
+                    console.log("AAA " + body);
                 const response = await fetch(URL, REQUEST);
                 console.log(response);
                 const data = await response.json();
