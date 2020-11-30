@@ -21,9 +21,10 @@ export const useHttp = () => {
                 if (body) {
                     body = JSON.stringify(body);
                     headers['Content-Type'] = 'application/json';
+                    headers['Access-Control-Allow-Origin'] = REACT_APP_SERVER_HOST;
+                    headers['Access-Control-Allow-Credentials'] = 'true';
                 }
-                console.log(REACT_APP_SERVER_HOST);
-                console.log(url);
+               
                 const response = await fetch(`${REACT_APP_SERVER_HOST}` + url, { method, body, headers });
                 const data = await response.json();
 
