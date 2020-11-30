@@ -2,7 +2,6 @@ import { useCallback, useState, useContext } from 'react';
 import { useAuth } from './auth.hook';
 import { AuthContext } from '../context/AuthContext';
 import { useHistory } from 'react-router-dom';
-// import dotenv from 'dotenv';
 
 export const useHttp = () => {
     const [loading, setLoading] = useState(false);
@@ -11,7 +10,6 @@ export const useHttp = () => {
     const auth = useContext(AuthContext);
     const history = useHistory();
 
-    // dotenv.config();
     const { REACT_APP_SERVER_HOST } = process.env;
 
     const request = useCallback(
@@ -23,7 +21,9 @@ export const useHttp = () => {
                     headers['Content-Type'] = 'application/json';
                 }
 
-                const response = await fetch(`${REACT_APP_SERVER_HOST}` + url, { method, body, headers, mode: 'no-cors' });
+                const URL = REACT_APP_SERVER_HOST + url;
+                const REQEUST = { method, body, headers, mode: 'no-cors' };
+                const response = await fetch(URL, REQEUST);
                 const data = await response.json();
 
                 if (!response.ok) {
