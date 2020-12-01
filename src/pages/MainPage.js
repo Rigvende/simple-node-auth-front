@@ -22,7 +22,7 @@ export const MainPage = () => {
     }, [request]);
 
     useEffect(() => {
-        getUsers();       
+        getUsers();
     }, [getUsers]);
 
     if (loading) {
@@ -30,8 +30,11 @@ export const MainPage = () => {
     }
 
     return (
-        <>
-            { users ? !loading && <UsersList users={users} /> : null}
-        </>
+        <div className='row'>
+            <div className='col s6 offset-s3'>
+                <h2>Users</h2>
+                    {users ? !loading && <UsersList users={users} /> : null}
+            </div>
+        </div>
     )
 };

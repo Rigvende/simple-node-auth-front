@@ -40,7 +40,7 @@ export const AuthPage = () => {
                 <h2>Welcome!</h2>
                 <div className="card blue darken-1">
                     <div className="card-content white-text">
-                        <span className="card-title">Enter the system:</span>
+                        <span className="card-title">Sign in:</span>
                         <div>
                             <div className="row">
                                 <div className="input-field">
