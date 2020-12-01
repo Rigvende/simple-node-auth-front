@@ -9,6 +9,7 @@ export const useHttp = () => {
     const { login } = useAuth();
     const auth = useContext(AuthContext);
     const history = useHistory();
+    const t = useContext(AuthContext).token;
 
     const { REACT_APP_SERVER_HOST } = process.env;
 
@@ -17,12 +18,13 @@ export const useHttp = () => {
             setLoading(true);
             try {
                 const URL = REACT_APP_SERVER_HOST + url;
+                console.log(t);
                 const REQUEST = {
                     method, body: body ? JSON.stringify(body) : null,
-                    headers: { 'Content-Type': 'application/json' }
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ` + t }
                 };
 
-                console.log(REQUEST.headers);
+                console.log(JSON.stringify(REQUEST.headers));
                 const response = await fetch(URL, REQUEST);                
                 const data = await response.json();
                 
