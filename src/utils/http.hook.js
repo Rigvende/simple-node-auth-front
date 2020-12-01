@@ -20,10 +20,10 @@ export const useHttp = () => {
                 const URL = REACT_APP_SERVER_HOST + url;
                 const REQUEST = {
                     method, body: body ? JSON.stringify(body) : null,
-                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ` + authToken }
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsImlhdCI6MTYwNjgxMDIwMSwiZXhwIjoxNjA2ODEzODAxfQ._ZK6TSP-Rhs2-ewK4raqOb5oQN6xtyOG_cw_fjplVig` }
                 };
 
-                console.log(JSON.stringify(REQUEST.headers));
+                console.log(authToken);
                 const response = await fetch(URL, REQUEST);                
                 const data = await response.json();
                 
