@@ -23,7 +23,9 @@ export const useHttp = () => {
                 };
 
                 const response = await fetch(URL, REQUEST);
+                console.log(response);
                 const data = await response.json();
+                console.log(data);
 
                 if (!response.ok) {
                     if (data.message && response.status === 401) {
