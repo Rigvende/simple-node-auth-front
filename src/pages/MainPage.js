@@ -1,12 +1,10 @@
-import React, { useEffect, useState, useContext, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
-import { AuthContext } from '../context/AuthContext';
 import { Loader } from '../components/Loader';
 import { UsersList } from '../components/UsersList';
 
 export const MainPage = () => {
-    const { token } = useContext(AuthContext);
     const message = useMessage();
     const { loading, error, clearError, request } = useHttp();
     const [users, setUsers] = useState(null);
@@ -18,10 +16,10 @@ export const MainPage = () => {
 
     const getUsers = useCallback(async () => {
         try {
-            const data = await request(`/users`, 'GET', null, { Authorization: `Bearer ${token}` });
+            const data = await request(`/users`, 'GET');
             setUsers(data.data.users);
         } catch (err) { }
-    }, [request, token]);
+    }, [request]);
 
     useEffect(() => {
         getUsers();       
