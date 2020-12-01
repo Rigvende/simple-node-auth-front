@@ -22,11 +22,9 @@ export const useHttp = () => {
                     headers: { 'Content-Type': 'application/json' }
                 };
 
-                const response = await fetch(URL, REQUEST);
-                console.log(response);
+                const response = await fetch(URL, REQUEST);                
                 const data = await response.json();
-                console.log(data);
-
+                
                 if (!response.ok) {
                     if (data.message && response.status === 401) {
                         auth.logout();
