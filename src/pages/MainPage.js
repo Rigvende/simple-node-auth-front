@@ -18,7 +18,6 @@ export const MainPage = () => {
 
     const getUsers = useCallback(async () => {
         try {
-            console.log(token);
             const data = await request(`/users`, 'GET', null, { Authorization: `Bearer ${token}` });
             setUsers(data.data.users);
         } catch (err) { }
