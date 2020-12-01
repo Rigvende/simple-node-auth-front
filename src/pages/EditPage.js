@@ -1,13 +1,11 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
 import { useHistory } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
 
 export const EditPage = () => {
     const id = useParams().id;
-    const { token } = useContext(AuthContext);
     const history = useHistory();
     const message = useMessage();
     const { loading, error, clearError, request } = useHttp();
@@ -19,7 +17,7 @@ export const EditPage = () => {
     const getUser = useCallback(async () => {
         if (id) {
             try {
-                const data = await request(`/users/${id}`, 'GET', null, { Authorization: `Bearer ${token}` });
+                const data = await request(`/users/${id}`, 'GET');
                 const { user } = data.data;
 
                 if (user) {
@@ -32,7 +30,7 @@ export const EditPage = () => {
         } else {
             history.push('/users');
         }
-    }, [id, request, history, token]);
+    }, [id, request, history]);
 
     useEffect(() => {
         getUser();
@@ -51,7 +49,7 @@ export const EditPage = () => {
 
     const updateHandler = async () => {
         try {
-            await request(`/users/${id}`, 'PATCH', { ...form }, { Authorization: `Bearer ${token}` });
+            await request(`/users/${id}`, 'PATCH', { ...form });
             history.push('/users');
         } catch (err) { }
     };

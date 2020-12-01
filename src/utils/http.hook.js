@@ -7,7 +7,7 @@ export const useHttp = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const { login } = useAuth();
-    const auth = useContext(AuthContext);
+    const { logout } = useContext(AuthContext);
     const history = useHistory();
     const authToken = useContext(AuthContext).token;
 
@@ -24,13 +24,12 @@ export const useHttp = () => {
                     'Authorization': authToken ? `Bearer ${authToken}` : null }
                 };
 
-                console.log(JSON.stringify(REQUEST.headers));
                 const response = await fetch(URL, REQUEST);                
                 const data = await response.json();
                 
                 if (!response.ok) {
                     if (data.message && response.status === 401) {
-                        auth.logout();
+                        logout();
                         history.push('/');
                     }
                     throw new Error(data.message || 'Something goes wrong...');
@@ -47,7 +46,7 @@ export const useHttp = () => {
                 setError(err.message);
                 throw err;
             }
-        }, [login, authToken, auth, history, REACT_APP_SERVER_HOST]);
+        }, [login, authToken, logout, history, REACT_APP_SERVER_HOST]);
 
     const clearError = useCallback(() => setError(null), []);
 

@@ -1,11 +1,9 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
-import { AuthContext } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 
 export const UsersList = ({ users }) => {
-    const { token } = useContext(AuthContext);
     const { request, error, clearError } = useHttp();
     const message = useMessage();
 
@@ -16,7 +14,7 @@ export const UsersList = ({ users }) => {
 
     const deleteHandler = async (id) => {
         try {
-            await request(`/users/${id}`, 'DELETE', null, { Authorization: `Bearer ${token}` });
+            await request(`/users/${id}`, 'DELETE');
             const row = document.getElementById(id);
             row.parentNode.removeChild(row);
         } catch (err) { }
