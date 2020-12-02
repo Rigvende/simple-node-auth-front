@@ -9,7 +9,7 @@ export const RegistrationPage = () => {
     const history = useHistory();
     const message = useMessage();
     const { login } = useAuth();
-    const { token } = useContext(AuthContext);
+    const { token, isAuthenticated } = useContext(AuthContext);
     const { loading, error, clearError, request } = useHttp();
     const [form, setForm] = useState({
         name: '',
@@ -36,7 +36,8 @@ export const RegistrationPage = () => {
                 const data = await request('/auth', 'POST', { ...form });
                 login(data.token, data.id);
             } 
-            history.push('/users');
+            console.log(isAuthenticated);
+            history.push('/');
         } catch (err) { }
     };
 
