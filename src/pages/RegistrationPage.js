@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
+import { useAuth } from '../utils/auth.hook';
 import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
 import { useHistory } from 'react-router-dom';
@@ -6,6 +8,8 @@ import { useHistory } from 'react-router-dom';
 export const RegistrationPage = () => {
     const history = useHistory();
     const message = useMessage();
+    const { login } = useAuth();
+    const { token } = useContext(AuthContext);
     const { loading, error, clearError, request } = useHttp();
     const [form, setForm] = useState({
         name: '',
@@ -28,7 +32,13 @@ export const RegistrationPage = () => {
     const registerHandler = async () => {
         try {
             await request('/users', 'POST', { ...form });
-            history.push('/');
+            if (!token) {
+                const data = await request('/auth', 'POST', { ...form });
+                login(data.token, data.id);
+                history.push('/users');
+            } else {
+                history.push('/');
+            }
         } catch (err) { }
     };
 

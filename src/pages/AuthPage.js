@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 export const AuthPage = () => {
     const history = useHistory();
-    const auth = useContext(AuthContext);
+    const { login } = useContext(AuthContext);
     const message = useMessage();
     const { loading, error, clearError, request } = useHttp();
     const [form, setForm] = useState({
@@ -28,7 +28,7 @@ export const AuthPage = () => {
     const authHandler = async () => {
         try {
             const data = await request('/auth', 'POST', { ...form });
-            auth.login(data.token, data.id);
+            login(data.token, data.id);
         } catch (err) { }
     };
 
