@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { useAuth } from '../utils/auth.hook';
 import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
 import { useHistory } from 'react-router-dom';
@@ -8,8 +7,7 @@ import { useHistory } from 'react-router-dom';
 export const RegistrationPage = () => {
     const history = useHistory();
     const message = useMessage();
-    const { login } = useAuth();
-    const { token, isAuthenticated } = useContext(AuthContext);
+    const { token, login } = useContext(AuthContext);
     const { loading, error, clearError, request } = useHttp();
     const [form, setForm] = useState({
         name: '',
@@ -36,7 +34,6 @@ export const RegistrationPage = () => {
                 const data = await request('/auth', 'POST', { ...form });
                 login(data.token, data.id);
             } 
-            console.log(isAuthenticated);
             history.push('/');
         } catch (err) { }
     };
