@@ -35,10 +35,8 @@ export const RegistrationPage = () => {
             if (!token) {
                 const data = await request('/auth', 'POST', { ...form });
                 login(data.token, data.id);
-                history.push('/users');
-            } else {
-                history.push('/');
-            }
+            } 
+            history.push('/users');
         } catch (err) { }
     };
 
