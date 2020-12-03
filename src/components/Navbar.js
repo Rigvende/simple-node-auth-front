@@ -1,15 +1,20 @@
-import React, {useContext} from 'react';
-import {NavLink, useHistory} from 'react-router-dom';
-import {AuthContext} from '../context/AuthContext';
+import React, { useContext } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
+import { useHttp } from '../utils/http.hook';
 
 export const Navbar = () => {
     const history = useHistory();
-    const auth = useContext(AuthContext);
+    const { logout } = useContext(AuthContext);
+    const { request } = useHttp();
 
-    const logoutHandler = event => {
+    const logoutHandler = async (event) => {
         event.preventDefault();
-        auth.logout();
-        history.push('/');
+        try {
+            logout();
+            await request('/logout');
+            history.push('/');
+        } catch (err) { }        
     };
 
     return (
@@ -18,7 +23,7 @@ export const Navbar = () => {
                 <a href="/" className="brand-logo">Simple-Node-Auth</a>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                     <li><NavLink to='/users'>Users</NavLink></li>
-                    <li><NavLink to='/register'>Add user</NavLink></li>                    
+                    <li><NavLink to='/register'>Add user</NavLink></li>
                     <li><a href="/logout" onClick={logoutHandler}>Logout</a></li>
                 </ul>
             </div>
