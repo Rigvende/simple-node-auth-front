@@ -11,8 +11,8 @@ export const Navbar = () => {
     const logoutHandler = async (event) => {
         event.preventDefault();
         try {
-            logout();
             await request('/logout');
+            logout();
             history.push('/');
         } catch (err) { }        
     };
