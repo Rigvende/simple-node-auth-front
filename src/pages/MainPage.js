@@ -16,7 +16,7 @@ export const MainPage = () => {
 
     const getUsers = useCallback(async () => {
         try {
-            const data = await request(`/users`, 'GET');
+            const data = await request(`/users`);
             setUsers(data.data.users);
         } catch (err) { }
     }, [request]);

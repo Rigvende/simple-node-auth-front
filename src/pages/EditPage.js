@@ -17,7 +17,7 @@ export const EditPage = () => {
     const getUser = useCallback(async () => {
         if (id) {
             try {
-                const data = await request(`/users/${id}`, 'GET');
+                const data = await request(`/users/${id}`);
                 const { user } = data.data;
 
                 if (user) {

@@ -18,13 +18,12 @@ export const useHttp = () => {
             setLoading(true);
             try {
                 const URL = REACT_APP_SERVER_HOST + url;
-                console.log(URL);
                 const REQUEST = {
                     method, body: body ? JSON.stringify(body) : null,
                     headers: { 'Content-Type': 'application/json', 
                     'Authorization': authToken ? `Bearer ${authToken}` : null }
                 };
-                console.log(REQUEST);
+                
                 const response = await fetch(URL, REQUEST);                
                 const data = await response.json();
                 
