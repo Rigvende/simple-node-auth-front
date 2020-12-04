@@ -36,7 +36,7 @@ export const UsersList = ({ users }) => {
             <tbody>
                 {users.map((user, index) => {
                     return (
-                        <tr id={user.id} key={index} style={idUser === user.id ? {background: 'green'} : null}>
+                        <tr id={user.id} key={index} style={idUser === user.id ? {border: '2 px solid green'} : null}>
                             <td>{index + 1}</td>
                             <td>{user.name}</td>
                             <td>{user.age}</td>

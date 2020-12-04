@@ -83,3 +83,7 @@ input.yellow-input:focus {
     box-shadow: 0 0 5px rgba(0,0,0,0.3); 
     background: linear-gradient(to bottom, #e8f3fa, #b7d1e6); 
 }
+
+.user {
+    border: 2px solid rgb(128, 128, 128);
+}
