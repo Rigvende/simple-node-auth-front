@@ -3,14 +3,12 @@ import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
 import { Loader } from '../components/Loader';
 import { UsersList } from '../components/UsersList';
-import { useParams } from 'react-router-dom';
 import { Pagination } from '../components/Pagination';
 
 export const MainPage = () => {
     const message = useMessage();
     const { loading, error, clearError, request } = useHttp();
     const [users, setUsers] = useState([]);
-    const page = useParams().page || 1;
     const [currentPage, setCurrentPage] = useState(null);
 
     useEffect(() => {
@@ -18,15 +16,23 @@ export const MainPage = () => {
         clearError();
     }, [error, message, clearError]);
 
+    const getPage = () => {
+        let search = window.location.search;
+        let params = new URLSearchParams(search);
+        return params.get('page');
+    }
+
     const getUsers = useCallback(async () => {
         try {
+            const page = getPage();
+            console.log(page);
             if (page !== currentPage) {
                 const data = await request(`/users?page=${page}`);
                 setUsers(data.data.users);
                 setCurrentPage(page);
             }
         } catch (err) { }
-    }, [request, page, currentPage]);
+    }, [request, currentPage]);
 
     useEffect(() => {
         getUsers();
