@@ -12,7 +12,7 @@ export const useRoutes = isAuthenticated => {
                 <Route path='/users' exact>
                     <MainPage />
                 </Route>
-                <Route path='/users?page=:page' exact>
+                <Route path='/users/:page' exact>
                     <MainPage />
                 </Route>
                 <Route path='/register' exact>
