@@ -10,6 +10,7 @@ export const MainPage = () => {
     const { loading, error, clearError, request } = useHttp();
     const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(null);
+    const [pager, setPager] = useState({});
 
     useEffect(() => {
         message(error);
@@ -29,6 +30,7 @@ export const MainPage = () => {
                 const data = await request(`/users?page=${page}`);
                 setUsers(data.data.users);
                 setCurrentPage(page);
+                setPager({currentPage, length: Math.ceil(data.data.length / data.data.limit) })
             }
         } catch (err) { }
     }, [request, currentPage]);
@@ -42,13 +44,15 @@ export const MainPage = () => {
     }
 
     return (
-        <div className='row'>
-            <div className='col s6 offset-s3'>
-                <h2>Users</h2>
-                {users ? !loading && <UsersList users={users} /> : null}
+        <div>
+            <div className='row'>
+                <div className='col s6 offset-s3'>
+                    <h2>Users</h2>
+                    {users ? !loading && <UsersList users={users} /> : null}
+                </div>
             </div>
             <div className="card-footer pb-0 pt-3">
-                <Pagination />
+                <Pagination pager={pager}/>
             </div>
         </div>
     )
