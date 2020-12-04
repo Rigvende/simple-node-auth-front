@@ -19,23 +19,19 @@ export const MainPage = () => {
         clearError();
     }, [error, message, clearError]);
 
-    // const getPage = () => {
-    //     let search = window.location.search;
-    //     let params = new URLSearchParams(search);
-    //     return params.get('page');
-    // }
-
     const getUsers = useCallback(async () => {
         try {
-            // const page = Number(getPage()) || 1;
             if (page !== currentPage) {
                 const data = await request(`/users?page=${page}`);
                 setUsers(data.data.users);
                 setCurrentPage(page);
-                setPager({ currentPage: page, length: Math.ceil(data.data.length / data.data.limit) })
+                setPager({
+                    currentPage: page,
+                    length: Math.ceil(data.data.length / data.data.limit)
+                });
             }
         } catch (err) { }
-    }, [request, currentPage]);
+    }, [request, currentPage, page]);
 
     useEffect(() => {
         getUsers();

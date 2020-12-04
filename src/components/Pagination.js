@@ -1,15 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 export const Pagination = ({ pager }) => {
     const { length, currentPage } = pager;
+    const history = useHistory();
 
     return (
         <>
             { pager && length > 0 &&
                 <ul className="pagination">
                     <li className={`page-item first-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                        <Link to={`/users/${currentPage}`} className="page-link">First</Link>
+                        <Link to={`/users/${currentPage}`} className="page-link" onClick={history.push(`/users/${currentPage}`)}>First</Link>
                     </li>
                     <li className={`page-item previous-item ${currentPage === 1 ? 'disabled' : ''}`}>
                         <Link to={`/users/${currentPage - 1}`} className="page-link">&lt;&lt;</Link>
