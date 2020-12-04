@@ -67,8 +67,9 @@ input.yellow-input:focus {
     text-decoration: none;
     color: #000;
     cursor: pointer;
-    margin: 0px 10px;
-    min-width: 50px;
+    margin: 1px 10px;
+    min-width: 70px;
+    width: 80px;
     height: 33px;
     background-color: rgb(231, 232, 233);
 }
