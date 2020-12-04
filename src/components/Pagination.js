@@ -9,19 +9,19 @@ export const Pagination = ({ pager }) => {
             { pager && length > 0 &&
                 <ul className="pagination">
                     <li className={`page-item first-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                        <Link to={{ search: `/1` }} className="page-link">First</Link>
+                        <Link to={{ search: `?page=1` }} className="page-link">First</Link>
                     </li>
                     <li className={`page-item previous-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                        <Link to={{ search: `/${currentPage - 1}` }} className="page-link">&lt;&lt;</Link>
+                        <Link to={{ search: `?page=${currentPage - 1}` }} className="page-link">&lt;&lt;</Link>
                     </li>
                     <li key={currentPage} className={`page-item number-item`}>
-                        <Link to={{ search: `/${currentPage}` }} className="page-link">{currentPage}</Link>
+                        <Link to={{ search: `?page=${currentPage}` }} className="page-link">{currentPage}</Link>
                     </li>
                     <li className={`page-item next-item ${currentPage === length ? 'disabled' : ''}`}>
-                        <Link to={{ search: `/${currentPage + 1}` }} className="page-link">&gt;&gt;</Link>
+                        <Link to={{ search: `?page=${currentPage + 1}` }} className="page-link">&gt;&gt;</Link>
                     </li>
                     <li className={`page-item last-item ${currentPage === length ? 'disabled' : ''}`}>
-                        <Link to={{ search: `/${length}` }} className="page-link">Last</Link>
+                        <Link to={{ search: `?page=${length}` }} className="page-link">Last</Link>
                     </li>
                 </ul>
             }
