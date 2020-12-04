@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const Pagination = ({ currentPage, length }) => {
+export const Pagination = ({ pager }) => {
+    const { length, currentPage } = pager;
+    
     return (
         <>
-            { length > 0 &&
+            { pager && length > 0 &&
                 <ul className="pagination">
                     <li className={`page-item first-item ${currentPage === 1 ? 'disabled' : ''}`}>
                         <Link to={{ search: `?page=1` }} className="page-link">First</Link>

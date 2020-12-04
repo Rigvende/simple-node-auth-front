@@ -26,7 +26,6 @@ export const UsersList = ({ users }) => {
         <table className="highlight centered">
             <thead>
                 <tr>
-                    <th>#</th>
                     <th>Name</th>
                     <th>Age</th>
                     <th>Operations</th>
@@ -37,7 +36,6 @@ export const UsersList = ({ users }) => {
                 {users.map((user, index) => {
                     return (
                         <tr id={user.id} key={index}>
-                            <td>{index + 1}</td>
                             <td className={idUser === user.id ? `user` : null}>{user.name}</td>
                             <td>{user.age}</td>
                             <td>
