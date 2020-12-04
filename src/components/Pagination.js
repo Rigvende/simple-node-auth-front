@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const Pagination = ({ currentPage, length }) => {
     return (
         <>
-            { length &&
+            { length > 0 &&
                 <ul className="pagination">
                     <li className={`page-item first-item ${currentPage === 1 ? 'disabled' : ''}`}>
                         <Link to={{ search: `?page=1` }} className="page-link">First</Link>
