@@ -28,10 +28,9 @@ export const MainPage = () => {
             const page = Number(getPage()) || 1;
             if (page !== currentPage) {
                 const data = await request(`/users?page=${page}`);
-                console.log(Math.ceil(data.data.length / data.data.limit));
                 setUsers(data.data.users);
                 setCurrentPage(page);
-                setPager({currentPage: page, length: Math.ceil(data.data.length / data.data.limit) })
+                setPager({ currentPage: page, length: Math.ceil(data.data.length / data.data.limit) })
             }
         } catch (err) { }
     }, [request, currentPage]);
@@ -52,8 +51,10 @@ export const MainPage = () => {
                     {users ? !loading && <UsersList users={users} /> : null}
                 </div>
             </div>
-            <div className="card-footer pb-0 pt-3">
-                <Pagination pager={pager}/>
+            <div className="row">
+                <div className='col s6 offset-s3'>
+                    <Pagination pager={pager} />
+                </div>
             </div>
         </div>
     )
