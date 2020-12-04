@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const Pagination = ({ pager }) => {
     const { length, currentPage } = pager;
-    console.log(currentPage + " " + length);
-
+    
     return (
         <>
             { pager && length > 0 &&
