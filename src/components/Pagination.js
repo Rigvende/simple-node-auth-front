@@ -18,21 +18,21 @@ export const Pagination = ({ pager }) => {
                     </li>
                     <li className={`page-item previous-item ${currentPage === 1 ? 'disabled' : ''}`}>
                         <Link
-                            to={`/users/${currentPage - 1}`}
+                            to={currentPage <= 1 ? `/users/1` : `/users/${currentPage - 1}`}
                             className="page-link">
                             &lt;&lt;
                         </Link>
                     </li>
                     <li key={currentPage} className={`page-item number-item`}>
                         <Link
-                            to={currentPage > length ? `/users/${length}` : `/users/${currentPage}`}
+                            to={`/users/${currentPage}`}
                             className="page-link">
                             {currentPage}
                         </Link>
                     </li>
                     <li className={`page-item next-item} ${currentPage === length ? 'disabled' : ''}`}>
                         <Link
-                            to={`/users/${currentPage + 1}`}
+                            to={currentPage >= length ? `/users/${length}` : `/users/${currentPage + 1}`}
                             className="page-link">
                             &gt;&gt;
                         </Link>
