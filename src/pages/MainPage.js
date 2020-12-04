@@ -40,7 +40,7 @@ export const MainPage = () => {
         <div className='row'>
             <div className='col s6 offset-s3'>
                 <h2>Users</h2>
-                {users ? !loading && <UsersList users={users} /> : null}
+                {users ? !loading && <UsersList users={users} handler={getUsers} /> : null}
             </div>
             <div className="card-footer pb-0 pt-3">
                 <Pagination pager={pager} />
