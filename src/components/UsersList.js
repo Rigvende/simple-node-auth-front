@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 export const UsersList = ({ users }) => {
     const { request, error, clearError } = useHttp();
     const message = useMessage();
+    const { idUser } = useContext(AuthContext);
 
     useEffect(() => {
         message(error);
@@ -34,7 +36,7 @@ export const UsersList = ({ users }) => {
             <tbody>
                 {users.map((user, index) => {
                     return (
-                        <tr id={user.id} key={index}>
+                        <tr id={user.id} key={index} style={idUser === user.id ? {background: 'green'} : null}>
                             <td>{index + 1}</td>
                             <td>{user.name}</td>
                             <td>{user.age}</td>
