@@ -8,11 +8,8 @@ import { RegistrationPage } from './pages/RegistrationPage';
 export const useRoutes = isAuthenticated => {
     if (isAuthenticated) {
         return (
-            <Switch>
-                <Route path='/users' exact>
-                    <MainPage />
-                </Route>
-                <Route path='/users/page/:page' exact>
+            <Switch>                
+                <Route path='/users/:page?' exact>
                     <MainPage />
                 </Route>
                 <Route path='/register' exact>
