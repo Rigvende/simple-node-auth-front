@@ -4,6 +4,7 @@ import { useMessage } from '../utils/message.hook';
 import { Loader } from '../components/Loader';
 import { UsersList } from '../components/UsersList';
 import { Pagination } from '../components/Pagination';
+import { useParams } from 'react-router-dom';
 
 export const MainPage = () => {
     const message = useMessage();
@@ -11,21 +12,22 @@ export const MainPage = () => {
     const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(null);
     const [pager, setPager] = useState({});
+    const page = Number(useParams().page) || 1;
 
     useEffect(() => {
         message(error);
         clearError();
     }, [error, message, clearError]);
 
-    const getPage = () => {
-        let search = window.location.search;
-        let params = new URLSearchParams(search);
-        return params.get('page');
-    }
+    // const getPage = () => {
+    //     let search = window.location.search;
+    //     let params = new URLSearchParams(search);
+    //     return params.get('page');
+    // }
 
     const getUsers = useCallback(async () => {
         try {
-            const page = Number(getPage()) || 1;
+            // const page = Number(getPage()) || 1;
             if (page !== currentPage) {
                 const data = await request(`/users?page=${page}`);
                 setUsers(data.data.users);
