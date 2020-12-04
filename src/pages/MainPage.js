@@ -24,8 +24,7 @@ export const MainPage = () => {
 
     const getUsers = useCallback(async () => {
         try {
-            const page = getPage();
-            console.log(page);
+            const page = Number(getPage()) || 1;
             if (page !== currentPage) {
                 const data = await request(`/users?page=${page}`);
                 setUsers(data.data.users);
