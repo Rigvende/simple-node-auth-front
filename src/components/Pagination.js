@@ -27,7 +27,7 @@ export const Pagination = ({ pager, handler }) => {
                             <Link
                                 to={`/users/${currentPage}`}
                                 className="page-link">
-                                {currentPage}
+                                Page {currentPage}
                             </Link>
                         </li>
                         <li className={`page-item next-item} ${currentPage === length ? 'disabled' : ''}`}>
