@@ -43,14 +43,12 @@ export const Pagination = ({ pager, handler }) => {
                             Last
                         </Link>
                     </li>
-                    <li>
-                        <div className="input-field">
-                            <select value={limit} onChange={handler} className='select-limit'>
-                                <option value="3">Show 3</option>
-                                <option value="5">Show 5</option>
-                                <option value="10">Show 10</option>
-                            </select>
-                        </div>
+                    <li className={`page-item number-item input-field`}>
+                        <select value={limit} onChange={handler} className='select-limit'>
+                            <option value="3">Show 3</option>
+                            <option value="5">Show 5</option>
+                            <option value="10">Show 10</option>
+                        </select>
                     </li>
                 </ul>
             }
