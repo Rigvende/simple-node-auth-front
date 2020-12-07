@@ -13,6 +13,7 @@ export const MainPage = () => {
     const [currentPage, setCurrentPage] = useState(null);
     const [pager, setPager] = useState({});
     const page = Number(useParams().page) || 1;
+    const [limit, setLimit] = useState(5);
 
     useEffect(() => {
         message(error);
@@ -22,7 +23,7 @@ export const MainPage = () => {
     const getUsers = useCallback(async () => {
         try {
             if (page !== currentPage) {
-                const data = await request(`/users?page=${page}`);
+                const data = await request(`/users?page=${page}&limit=${limit}`);
                 setUsers(data.data.users);
                 setCurrentPage(page);
                 setPager({
@@ -31,7 +32,7 @@ export const MainPage = () => {
                 });
             }
         } catch (err) { }
-    }, [request, currentPage, page]);
+    }, [request, currentPage, page, limit]);
 
     useEffect(() => {
         getUsers();
@@ -39,6 +40,13 @@ export const MainPage = () => {
 
     if (loading) {
         return <Loader />;
+    }
+
+    const selectHandler = (event) => {
+        event.preventDefault();
+        console.log(event.target.value);
+        setLimit(event.target.value);
+        console.log(limit);
     }
 
     return (
@@ -52,6 +60,14 @@ export const MainPage = () => {
             <div className="row">
                 <div className='col s6 offset-s3'>
                     <Pagination pager={pager} />
+                </div>
+                <div class="input-field col s12">
+                    <select value={limit} onChange={selectHandler}>
+                        <option value="3">3</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                    </select>
+                    <label>Show</label>
                 </div>
             </div>
         </div>
