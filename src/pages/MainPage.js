@@ -30,7 +30,8 @@ export const MainPage = () => {
                 setCurrentLimit(limit);
                 setPager({
                     currentPage: page,
-                    length: Math.ceil(data.data.length / data.data.limit)
+                    length: Math.ceil(data.data.length / data.data.limit),
+                    limit    
                 });
             }
         } catch (err) { }
@@ -60,18 +61,9 @@ export const MainPage = () => {
                     {users ? !loading && <UsersList users={users} /> : null}
                 </div>
             </div>
-            <div className='row'>
+            <div className="row">
                 <div className='col s6 offset-s3'>
-                    <div>
-                        <Pagination pager={pager} />
-                        <div className='input-field'>
-                            <select value={limit} onChange={selectHandler} className='select-limit'>
-                                <option value="3">Show 3</option>
-                                <option value="5">Show 5</option>
-                                <option value="10">Show 10</option>
-                            </select>
-                        </div>
-                    </div>
+                    <Pagination pager={pager} handler={selectHandler} />
                 </div>
             </div>
         </div>
