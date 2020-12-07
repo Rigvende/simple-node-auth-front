@@ -5,17 +5,16 @@ import { Loader } from '../components/Loader';
 import { UsersList } from '../components/UsersList';
 import { Pagination } from '../components/Pagination';
 import { useParams } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 
 export const MainPage = () => {
     const message = useMessage();
-    const history = useHistory();
     const { loading, error, clearError, request } = useHttp();
     const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(null);
     const [pager, setPager] = useState({});
-    const page = Number(useParams().page) || 1;
+    const [page, setPage] = useState(Number(useParams().page) || 1);
     const [limit, setLimit] = useState(5);
+    const [currentLimit, setCurrentLimit] = useState(null);
 
     useEffect(() => {
         message(error);
@@ -24,17 +23,18 @@ export const MainPage = () => {
 
     const getUsers = useCallback(async () => {
         try {
-            if (page !== currentPage) {
+            if (page !== currentPage || limit !== currentLimit) {
                 const data = await request(`/users?page=${page}&limit=${limit}`);
                 setUsers(data.data.users);
                 setCurrentPage(page);
+                setCurrentLimit(limit);
                 setPager({
                     currentPage: page,
                     length: Math.ceil(data.data.length / data.data.limit)
                 });
             }
         } catch (err) { }
-    }, [request, currentPage, page, limit]);
+    }, [request, currentPage, page, currentLimit, limit]);
 
     useEffect(() => {
         getUsers();
@@ -48,7 +48,8 @@ export const MainPage = () => {
         event.preventDefault();
         if (event.target.value !== limit) {
             setLimit(event.target.value);
-            history.push('/users/1');
+            setPage(1);
+            getUsers();
         }
     }
 
