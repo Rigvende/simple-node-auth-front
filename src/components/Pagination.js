@@ -19,7 +19,7 @@ export const Pagination = ({ pager }) => {
                         <Link
                             to={currentPage <= 1 ? `/users/1` : `/users/${currentPage - 1}`}
                             className="page-link">
-                            <i class="material-icons">chevron_left</i>
+                            <i className="material-icons">chevron_left</i>
                         </Link>
                     </li>
                     <li key={currentPage} className={`page-item number-item`}>
@@ -33,7 +33,7 @@ export const Pagination = ({ pager }) => {
                         <Link
                             to={currentPage >= length ? `/users/${length}` : `/users/${currentPage + 1}`}
                             className="page-link">
-                            <i class="material-icons">chevron_right</i>
+                            <i className="material-icons">chevron_right</i>
                         </Link>
                     </li>
                     <li className={`page-item last-item ${currentPage === length ? 'disabled' : ''}`}>
