@@ -5,9 +5,11 @@ import { Loader } from '../components/Loader';
 import { UsersList } from '../components/UsersList';
 import { Pagination } from '../components/Pagination';
 import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 export const MainPage = () => {
     const message = useMessage();
+    const history = useHistory();
     const { loading, error, clearError, request } = useHttp();
     const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(null);
@@ -34,8 +36,11 @@ export const MainPage = () => {
                     length: Math.ceil(data.data.length / data.data.limit)
                 });
             }
+            if (limitChanged) {
+                history.push('/users/1');
+            }
         } catch (err) { }
-    }, [request, currentPage, currentLimit, page, limit]);
+    }, [request, currentPage, page, currentLimit, limit, history]);
 
     useEffect(() => {
         getUsers();
@@ -67,8 +72,8 @@ export const MainPage = () => {
                 </div>
             </div>
             <div className='row'>
-                <div className="input-field" style={{'display': 'block'}}>
-                    <select value={limit} onChange={selectHandler}>
+                <div className="input-field">
+                    <select value={limit} onChange={selectHandler} style={{ 'display': 'block' }}>
                         <option value="3">Show 3 per page</option>
                         <option value="5">Show 5 per page</option>
                         <option value="10">Show 10 per page</option>
