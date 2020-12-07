@@ -12,7 +12,7 @@ export const MainPage = () => {
     const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(null);
     const [pager, setPager] = useState({});
-    const [page, setPage] = useState(Number(useParams().page) || 1);
+    const page = Number(useParams().page) || 1;
     const [limit, setLimit] = useState(5);
     const [currentLimit, setCurrentLimit] = useState(null);
 
@@ -48,7 +48,6 @@ export const MainPage = () => {
         event.preventDefault();
         if (event.target.value !== limit) {
             setLimit(event.target.value);
-            setPage(1);
             getUsers();
         }
     }
