@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const Pagination = ({ pager }) => {
     const { length, currentPage } = pager;
-    
+
     return (
         <>
             { pager && length > 0 &&
@@ -22,12 +22,8 @@ export const Pagination = ({ pager }) => {
                             <i className="material-icons">chevron_left</i>
                         </Link>
                     </li>
-                    <li key={currentPage} className={`page-item number-item disabled user`}>
-                        <Link
-                            to={`/users/${currentPage}`}
-                            className="page-link">
-                            {currentPage}
-                        </Link>
+                    <li key={currentPage} className={`page-item number-item user`}>
+                        {currentPage}
                     </li>
                     <li className={`page-item next-item} ${currentPage === length ? 'disabled' : ''}`}>
                         <Link
