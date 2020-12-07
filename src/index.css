@@ -87,3 +87,8 @@ input.yellow-input:focus {
 .user {
     color: rgb(3, 151, 250);
 }
+
+.select-limit  {
+    display: block; 
+    width: auto; 
+}
