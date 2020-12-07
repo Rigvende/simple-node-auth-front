@@ -61,6 +61,8 @@ export const MainPage = () => {
                 <div className='col s6 offset-s3'>
                     <Pagination pager={pager} />
                 </div>
+            </div>
+            <div className='row'>
                 <div class="input-field col s12">
                     <select value={limit} onChange={selectHandler}>
                         <option value="3">3</option>
