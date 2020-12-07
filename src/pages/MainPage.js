@@ -63,7 +63,7 @@ export const MainPage = () => {
                 </div>
             </div>
             <div className='row'>
-                <div class="input-field col s12">
+                <div className="input-field col s12">
                     <select value={limit} onChange={selectHandler}>
                         <option value="3">3</option>
                         <option value="5">5</option>
