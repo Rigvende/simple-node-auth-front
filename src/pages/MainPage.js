@@ -23,13 +23,14 @@ export const MainPage = () => {
 
     const getUsers = useCallback(async () => {
         try {
-            if (page !== currentPage || limit !== currentLimit) {
-                const data = await request(`/users?page=${page}&limit=${limit}`);
+            const limitChanged = limit !== currentLimit;
+            if (page !== currentPage || limitChanged) {
+                const data = await request(`/users?page=${limitChanged ? 1 : page}&limit=${limit}`);
                 setUsers(data.data.users);
-                setCurrentPage(page);
+                setCurrentPage(limitChanged ? 1 : page);
                 setCurrentLimit(limit);
                 setPager({
-                    currentPage: page,
+                    currentPage: limitChanged ? 1 : page,
                     length: Math.ceil(data.data.length / data.data.limit)
                 });
             }
@@ -66,13 +67,12 @@ export const MainPage = () => {
                 </div>
             </div>
             <div className='row'>
-                <div className="input-field col s12">
+                <div className="input-field" style={{'display': 'block'}}>
                     <select value={limit} onChange={selectHandler}>
-                        <option value="3">3</option>
-                        <option value="5">5</option>
-                        <option value="10">10</option>
+                        <option value="3">Show 3 per page</option>
+                        <option value="5">Show 5 per page</option>
+                        <option value="10">Show 10 per page</option>
                     </select>
-                    <label>Show</label>
                 </div>
             </div>
         </div>
