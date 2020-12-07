@@ -16,7 +16,6 @@ export const MainPage = () => {
     const [pager, setPager] = useState({});
     const page = Number(useParams().page) || 1;
     const [limit, setLimit] = useState(5);
-    const [currentLimit, setCurrentLimit] = useState(null);
 
     useEffect(() => {
         message(error);
@@ -25,22 +24,17 @@ export const MainPage = () => {
 
     const getUsers = useCallback(async () => {
         try {
-            const limitChanged = limit !== currentLimit;
-            if (page !== currentPage || limitChanged) {
-                const data = await request(`/users?page=${limitChanged ? 1 : page}&limit=${limit}`);
+            if (page !== currentPage) {
+                const data = await request(`/users?page=${page}&limit=${limit}`);
                 setUsers(data.data.users);
-                setCurrentPage(limitChanged ? 1 : page);
-                setCurrentLimit(limit);
+                setCurrentPage(page);
                 setPager({
-                    currentPage: limitChanged ? 1 : page,
+                    currentPage: page,
                     length: Math.ceil(data.data.length / data.data.limit)
                 });
             }
-            if (limitChanged) {
-                history.push('/users/1');
-            }
         } catch (err) { }
-    }, [request, currentPage, page, currentLimit, limit, history]);
+    }, [request, currentPage, page, limit]);
 
     useEffect(() => {
         getUsers();
@@ -54,7 +48,7 @@ export const MainPage = () => {
         event.preventDefault();
         if (event.target.value !== limit) {
             setLimit(event.target.value);
-            getUsers();
+            history.push('/users/1');
         }
     }
 
