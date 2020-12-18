@@ -11,7 +11,8 @@ export const AuthPage = () => {
     const { loading, error, clearError, request } = useHttp();
     const [form, setForm] = useState({
         email: '',
-        password: ''
+        password: '',
+        rememberMe: false
     });
 
     useEffect(() => {
@@ -23,7 +24,11 @@ export const AuthPage = () => {
         window.M.updateTextFields();
     }, []);
 
-    const changeHandler = event => setForm({ ...form, [event.target.name]: event.target.value });
+    const changeHandler = event => {
+        const { target } = event;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        setForm({ ...form, [target.name]: value });
+    };
 
     const authHandler = async () => {
         try {
@@ -68,6 +73,18 @@ export const AuthPage = () => {
                                         className="label-white"
                                         htmlFor="password">Password</label>
                                 </div>
+                            </div>
+                            <div className="row checkbox-margin">
+                                <label className="label-white">
+                                    <input
+                                        type="checkbox"
+                                        className="filled-in"
+                                        id='rememberMe'
+                                        name='rememberMe'
+                                        checked={form.rememberMe}
+                                        onChange={changeHandler} />
+                                    <span>Remember me</span>
+                                </label>
                             </div>
                         </div>
                     </div>

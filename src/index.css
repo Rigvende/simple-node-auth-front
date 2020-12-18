@@ -105,3 +105,16 @@ input.yellow-input:focus {
 .select-limit {
     margin-top: 8px;
 }
+
+[type="checkbox"].filled-in:not(:checked)+span:not(.lever):after {
+    border: 2px solid #fff;
+}
+
+[type="checkbox"].filled-in:checked+span:not(.lever):after {
+    border: 2px solid orange;
+    background-color: orange;
+}
+
+.checkbox-margin {
+    margin-top: 20px;
+}
