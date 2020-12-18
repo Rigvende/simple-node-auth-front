@@ -7,7 +7,7 @@ export const Pagination = ({ pager, handler }) => {
     return (
         <>
             { pager && length > 0 &&
-                <div>
+                <div className='row-with-buttons'>
                     <ul className="pagination">
                         <li className={`page-item first-item ${currentPage === 1 ? 'disabled' : ''}`}>
                             <Link
@@ -45,7 +45,8 @@ export const Pagination = ({ pager, handler }) => {
                         </Link>
                         </li>
                     </ul>
-                    <div className="input-field">
+                    
+                    <div className={`page-item number-item`}>
                         <select value={limit} onChange={handler} className='select-limit'>
                             <option value="3">3 per page</option>
                             <option value="5">5 per page</option>

@@ -94,10 +94,14 @@ input.yellow-input:focus {
 }
 .pagination {
     min-width: 300px;
-    width: 300px;
+    width: 400px;
 }
 
-.table-header-buttons {
+.row-with-buttons {
     display: flex;
     justify-content: space-between;
+}
+
+.select-limit {
+    margin-top: 8px;
 }

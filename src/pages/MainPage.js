@@ -80,21 +80,21 @@ export const MainPage = () => {
         <div >
             <div className='row' id='users-save' ref={componentRef} >
                 <div className='col s6 offset-s3' >
-                    <h2 className='table-header-buttons'>
+                    <h2 className='row-with-buttons'>
                         Users
 
-                        <div>
+                        <div>                            
                             <button
                                 className='btn yellow darken-4'
                                 disabled={loading}
-                                onClick={handlePrint}>
-                                Print
+                                onClick={handleDownload}>
+                                Download
                             </button>
                             <button
                                 className='btn grey'
                                 disabled={loading}
-                                onClick={handleDownload}>
-                                Download
+                                onClick={handlePrint}>
+                                Print
                             </button>
                         </div>
                     </h2>
