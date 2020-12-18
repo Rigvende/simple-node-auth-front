@@ -5,11 +5,9 @@ import { Loader } from '../components/Loader';
 import { UsersList } from '../components/UsersList';
 import { Pagination } from '../components/Pagination';
 import { useParams } from 'react-router-dom';
-// import {htmlToText} from 'html-to-text';
 import dateformat from 'dateformat';
-import printJS from 'print-js';
-import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+import {RingierLight} from '../context/customFonts';
 
 export const MainPage = () => {
     const componentRef = useRef();
@@ -60,20 +58,52 @@ export const MainPage = () => {
     }
 
     const handlePrint = () => {
-        printJS('users-save', 'html');
+        const pdf = new jsPDF();
+        buildPDF(pdf);
+        pdf.autoPrint();
+        pdf.output('dataurlnewwindow');
     }
 
     const handleDownload = () => {
-        html2canvas(componentRef.current).then(canvas => {
-            const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF({
-                orientation: "landscape",
-            });
-            pdf.addImage(imgData, 'PNG', 0, 0);
-            const date = dateformat(new Date(), 'yyyymmdd');
-            const fileName = `Users-${date}.pdf`;
-            pdf.save(fileName);
+        const pdf = new jsPDF();
+        buildPDF(pdf);
+        const date = dateformat(new Date(), 'yyyymmdd');
+        const fileName = `Users-${date}.pdf`;
+        pdf.save(fileName);
+    };
+
+    const buildPDF = (pdf) => {
+        pdf.addFileToVFS('RingierLight.ttf', RingierLight);
+        pdf.addFont('RingierLight.ttf', 'Ringier Light', 'normal', 'StandardEncoding');
+        pdf.setFont('Ringier Light');
+        pdf.setTextColor(50, 50, 50);
+        const codeBlock = componentRef.current;
+        let users = codeBlock.querySelectorAll('tr');
+
+        let marginTop = 20;
+        let marginLeft = 20;
+        let index = 0;
+
+        pdf.setFontSize(22)
+        pdf.text(marginLeft, marginTop, `Users (page ${page})`);
+        marginTop += 10;
+        pdf.text(marginLeft, marginTop, '------------------------')
+
+        users.forEach(user => {
+            addUserDataToPDF(pdf, user, index, marginTop);
+            marginTop += 10;
+            index++;
         });
+    };
+
+    const addUserDataToPDF = (pdf, user, index, marginTop, marginLeft = 20) => {
+        let data = user.querySelectorAll('td');
+        if (data.length > 1) {
+            let name = data[0].innerHTML;
+            let age = data[1].innerHTML;
+            pdf.setFontSize(16)
+            pdf.text(marginLeft, marginTop, `${index}: ${name}, ${age} years`);
+        }
     };
 
     return (
@@ -83,7 +113,7 @@ export const MainPage = () => {
                     <h2 className='row-with-buttons'>
                         Users
 
-                        <div>                            
+                        <div>
                             <button
                                 className='btn yellow darken-4'
                                 disabled={loading}
