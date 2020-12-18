@@ -7,7 +7,7 @@ import { Pagination } from '../components/Pagination';
 import { useParams } from 'react-router-dom';
 import dateformat from 'dateformat';
 import { jsPDF } from 'jspdf';
-import {RingierLight} from '../context/customFonts';
+import { RingierLight } from '../context/customFonts';
 
 export const MainPage = () => {
     const componentRef = useRef();
