@@ -115,13 +115,13 @@ export const MainPage = () => {
 
                         <div>
                             <button
-                                className='btn yellow darken-4'
+                                className='btn yellow darken-4 waves-effect waves-light'
                                 disabled={loading}
                                 onClick={handleDownload}>
                                 Download
                             </button>
                             <button
-                                className='btn grey'
+                                className='btn grey waves-effect waves-light'
                                 disabled={loading}
                                 onClick={handlePrint}>
                                 Print
