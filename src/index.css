@@ -96,3 +96,8 @@ input.yellow-input:focus {
     min-width: 300px;
     width: 300px;
 }
+
+.table-header-buttons {
+    display: flex;
+    justify-content: space-between;
+}

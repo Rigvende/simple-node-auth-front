@@ -64,21 +64,41 @@ export const MainPage = () => {
     }
 
     const handleDownload = () => {
-        html2canvas(document.querySelector("#users-save")).then(canvas => {
+        html2canvas(componentRef.current).then(canvas => {
             const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF();
+            const pdf = new jsPDF({
+                orientation: "landscape",
+            });
             pdf.addImage(imgData, 'PNG', 0, 0);
             const date = dateformat(new Date(), 'yyyymmdd');
-            const fileName = `Users-${date}.txt`;
+            const fileName = `Users-${date}.pdf`;
             pdf.save(fileName);
         });
     };
 
     return (
-        <div id='users-save' ref={componentRef} >
-            <div className='row'>
+        <div >
+            <div className='row' id='users-save' ref={componentRef} >
                 <div className='col s6 offset-s3' >
-                    <h2>Users</h2>
+                    <h2 className='table-header-buttons'>
+                        Users
+
+                        <div>
+                            <button
+                                className='btn yellow darken-4'
+                                disabled={loading}
+                                onClick={handlePrint}>
+                                Print
+                            </button>
+                            <button
+                                className='btn grey'
+                                disabled={loading}
+                                onClick={handleDownload}>
+                                Download
+                            </button>
+                        </div>
+                    </h2>
+
                     {users ? !loading && <UsersList users={users} /> : null}
                 </div>
             </div>
@@ -87,21 +107,6 @@ export const MainPage = () => {
                 <div className='col s6 offset-s3'>
                     <Pagination pager={pager} handler={selectHandler} />
                 </div>
-            </div>
-
-            <div className="card-action center">
-                <button
-                    className='btn yellow darken-4'
-                    disabled={loading}
-                    onClick={handlePrint}>
-                    Print
-                </button>
-                <button
-                    className='btn grey'
-                    disabled={loading}
-                    onClick={handleDownload}>
-                    Download
-                </button>
             </div>
         </div>
     )
