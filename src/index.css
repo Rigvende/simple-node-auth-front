@@ -116,5 +116,15 @@ input.yellow-input:focus {
 }
 
 .checkbox-margin {
-    margin-top: 20px;
+    padding-top: 30px;
+}
+
+.notification-white {
+    padding-top: 30px;
+    font-size: 14px;
+}
+
+.orange-link {
+    color: orange;
+    font-size: 14 px;
 }

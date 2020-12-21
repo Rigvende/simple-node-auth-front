@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
 import { AuthContext } from '../context/AuthContext';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 export const AuthPage = () => {
     const history = useHistory();
@@ -43,9 +43,11 @@ export const AuthPage = () => {
         <div className='row'>
             <div className='col s6 offset-s3'>
                 <h2>Welcome!</h2>
+
                 <div className="card blue darken-1">
                     <div className="card-content white-text">
                         <span className="card-title">Sign in:</span>
+
                         <div>
                             <div className="row">
                                 <div className="input-field">
@@ -60,6 +62,7 @@ export const AuthPage = () => {
                                         htmlFor="email">Email</label>
                                 </div>
                             </div>
+
                             <div className="row">
                                 <div className="input-field">
                                     <input
@@ -74,20 +77,30 @@ export const AuthPage = () => {
                                         htmlFor="password">Password</label>
                                 </div>
                             </div>
-                            <div className="row checkbox-margin">
-                                <label className="label-white">
-                                    <input
-                                        type="checkbox"
-                                        className="filled-in"
-                                        id='rememberMe'
-                                        name='rememberMe'
-                                        checked={form.rememberMe}
-                                        onChange={changeHandler} />
-                                    <span>Remember me</span>
-                                </label>
+
+                            <div className="row">
+                                <div>
+                                    <Link className="orange-link" to="/reset">
+                                        Forgot password?
+                                    </Link>
+                                </div>
+
+                                <div className="checkbox-margin">
+                                    <label className="label-white">
+                                        <input
+                                            type="checkbox"
+                                            className="filled-in"
+                                            id='rememberMe'
+                                            name='rememberMe'
+                                            checked={form.rememberMe}
+                                            onChange={changeHandler} />
+                                        <span>Remember me</span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                     <div className="card-action">
                         <button
                             className='btn yellow darken-4 waves-effect waves-light'
@@ -95,6 +108,7 @@ export const AuthPage = () => {
                             onClick={authHandler}>
                             Login
                         </button>
+                        
                         <button
                             className='btn grey waves-effect waves-light'
                             disabled={loading}
@@ -105,5 +119,5 @@ export const AuthPage = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 };

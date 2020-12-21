@@ -4,6 +4,7 @@ import { MainPage } from './pages/MainPage';
 import { AuthPage } from './pages/AuthPage';
 import { EditPage } from './pages/EditPage';
 import { RegistrationPage } from './pages/RegistrationPage';
+import { ResetPasswordPage } from './pages/ResetPasswordPage';
 
 export const useRoutes = isAuthenticated => {
     if (isAuthenticated) {
@@ -30,6 +31,9 @@ export const useRoutes = isAuthenticated => {
             </Route>
             <Route path='/register' exact>
                 <RegistrationPage />
+            </Route>
+            <Route path='/reset' exact>
+                <ResetPasswordPage />
             </Route>
             <Redirect to="/" />
         </Switch>
