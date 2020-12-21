@@ -128,3 +128,11 @@ input.yellow-input:focus {
     color: orange;
     font-size: 14 px;
 }
+
+.pointer {
+    cursor: pointer;
+}
+
+.pointer:hover {
+    color: rgb(3, 151, 250);       
+}
