@@ -17,7 +17,8 @@ export const useHttp = () => {
         async (url, method = 'GET', body = null, headers = {}) => {
             setLoading(true);
             try {
-                const URL = REACT_APP_SERVER_HOST + url;
+                const URL = `${ REACT_APP_SERVER_HOST }${ url }`;
+                // const URL = 'http://localhost:5000' + url; // todo для дева, удалить или переделать
                 const REQUEST = {
                     method, body: body ? JSON.stringify(body) : null,
                     headers: { 'Content-Type': 'application/json', 
@@ -47,6 +48,7 @@ export const useHttp = () => {
                 throw err;
             }
         }, [login, authToken, logout, history, REACT_APP_SERVER_HOST]);
+    // }, [login, authToken, logout, history]); //для дева // todo для дева, удалить или переделать
 
     const clearError = useCallback(() => setError(null), []);
 
