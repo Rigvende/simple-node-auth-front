@@ -5,6 +5,7 @@ import { AuthPage } from './pages/AuthPage';
 import { EditPage } from './pages/EditPage';
 import { RegistrationPage } from './pages/RegistrationPage';
 import { ResetPasswordPage } from './pages/ResetPasswordPage';
+import { ChangePasswordPage } from './pages/ChangePasswordPage';
 
 export const useRoutes = isAuthenticated => {
     if (isAuthenticated) {
@@ -34,6 +35,9 @@ export const useRoutes = isAuthenticated => {
             </Route>
             <Route path='/reset' exact>
                 <ResetPasswordPage />
+            </Route>
+            <Route path='/change/:id' exact>
+                <ChangePasswordPage />
             </Route>
             <Redirect to="/" />
         </Switch>
