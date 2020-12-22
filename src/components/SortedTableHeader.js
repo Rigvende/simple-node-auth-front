@@ -28,9 +28,7 @@ export default function SortedTableHeader(props) {
                 {columns.map(column => {
                     let label = column.label;
                     return (
-                        <th className='pointer'
-                            key={column.id}
-                            sortDirection={orderBy === column.id ? order : false}>
+                        <th className='pointer' key={column.id}>                            
                             <div
                                 direction={orderBy === column.id ? order : 'asc'}
                                 onClick={createSortHandler(column.id)}>
