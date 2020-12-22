@@ -37,8 +37,8 @@ export default function SortedTableHeader(props) {
                                 {label}
                                 {orderBy === column.id
                                     ? order === 'desc'
-                                        ? <i class="tiny material-icons">arrow_drop_down</i>
-                                        : <i class="tiny material-icons">arrow_drop_up</i>
+                                        ? <i className="tiny material-icons">arrow_drop_down</i>
+                                        : <i className="tiny material-icons">arrow_drop_up</i>
                                     : null}
                             </div>
                         </th>
