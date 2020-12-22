@@ -62,9 +62,8 @@ export const MainPage = () => {
     const getPrintableText = (userList) =>
         `${texts.titles.print}\n
         ${texts.titles.print_}\n
-        ${userList.join('\n\n')}\n
-        Created at: ${moment().format('DD.MM.YYYY | HH:mm')}
-        `;
+        ${userList.join('\n')}\n
+        Created at: ${moment().format('DD.MM.YYYY | HH:mm')}`;
 
     const handlePrint = () => {
         let userList = [];
@@ -98,6 +97,20 @@ export const MainPage = () => {
         });
     };
 
+    const handleDownload = () => {
+        let userList = [];
+        buildUsers(userList);
+        const text = getPrintableText(userList);
+        const fileName = `Users-SimpleNodeAuth-${moment().format('YYYYMMDD')}.txt`;
+        const element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', fileName);
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    };
+
     // const handlePrint = () => {
     //     const pdf = new jsPDF();
     //     buildPDF(pdf);
@@ -106,60 +119,46 @@ export const MainPage = () => {
     // }
 
     // const handleDownload = () => {
-        // let userList = [];
-        // buildUsers(userList);
-    //     const text = getPrintableText(userList);
-    //     const fileName = `Users-SimpleNodeAuth-${moment().format('YYYYMMDD')}.txt`;
-    //     const element = document.createElement('a');
-    //     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    //     element.setAttribute('download', fileName);
-    //     element.style.display = 'none';
-    //     document.body.appendChild(element);
-    //     element.click();
-    //     document.body.removeChild(element);
+    //     const pdf = new jsPDF();
+    //     buildPDF(pdf);
+    //     const date = dateformat(new Date(), 'yyyymmdd');
+    //     const fileName = `Users-${date}.pdf`;
+    //     pdf.save(fileName);
     // };
 
-    const handleDownload = () => {
-        const pdf = new jsPDF();
-        buildPDF(pdf);
-        const date = dateformat(new Date(), 'yyyymmdd');
-        const fileName = `Users-${date}.pdf`;
-        pdf.save(fileName);
-    };
+    // const buildPDF = (pdf) => {
+    //     pdf.addFileToVFS('RingierLight.ttf', RingierLight);
+    //     pdf.addFont('RingierLight.ttf', 'Ringier Light', 'normal', 'StandardEncoding');
+    //     pdf.setFont('Ringier Light');
+    //     pdf.setTextColor(50, 50, 50);
+    //     const codeBlock = componentRef.current;
+    //     let users = codeBlock.querySelectorAll('tr');
 
-    const buildPDF = (pdf) => {
-        pdf.addFileToVFS('RingierLight.ttf', RingierLight);
-        pdf.addFont('RingierLight.ttf', 'Ringier Light', 'normal', 'StandardEncoding');
-        pdf.setFont('Ringier Light');
-        pdf.setTextColor(50, 50, 50);
-        const codeBlock = componentRef.current;
-        let users = codeBlock.querySelectorAll('tr');
+    //     let marginTop = 20;
+    //     let marginLeft = 20;
+    //     let index = 0;
 
-        let marginTop = 20;
-        let marginLeft = 20;
-        let index = 0;
+    //     pdf.setFontSize(22)
+    //     pdf.text(marginLeft, marginTop, `Users (page ${page})`);
+    //     marginTop += 10;
+    //     pdf.text(marginLeft, marginTop, '------------------------')
 
-        pdf.setFontSize(22)
-        pdf.text(marginLeft, marginTop, `Users (page ${page})`);
-        marginTop += 10;
-        pdf.text(marginLeft, marginTop, '------------------------')
+    //     users.forEach(user => {
+    //         addUserDataToPDF(pdf, user, index, marginTop);
+    //         marginTop += 10;
+    //         index++;
+    //     });
+    // };
 
-        users.forEach(user => {
-            addUserDataToPDF(pdf, user, index, marginTop);
-            marginTop += 10;
-            index++;
-        });
-    };
-
-    const addUserDataToPDF = (pdf, user, index, marginTop, marginLeft = 20) => {
-        let data = user.querySelectorAll('td');
-        if (data.length > 1) {
-            let name = data[0].innerHTML;
-            let age = data[1].innerHTML;
-            pdf.setFontSize(16)
-            pdf.text(marginLeft, marginTop, `${index}: ${name}, ${age} years`);
-        }
-    };
+    // const addUserDataToPDF = (pdf, user, index, marginTop, marginLeft = 20) => {
+    //     let data = user.querySelectorAll('td');
+    //     if (data.length > 1) {
+    //         let name = data[0].innerHTML;
+    //         let age = data[1].innerHTML;
+    //         pdf.setFontSize(16)
+    //         pdf.text(marginLeft, marginTop, `${index}: ${name}, ${age} years`);
+    //     }
+    // };
 
     return (
         <div >
