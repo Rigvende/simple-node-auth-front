@@ -3,6 +3,7 @@ import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
 import { AuthContext } from '../context/AuthContext';
 import { useHistory, Link } from 'react-router-dom';
+import { texts } from '../texts';
 
 export const AuthPage = () => {
     const history = useHistory();
@@ -42,11 +43,11 @@ export const AuthPage = () => {
     return (
         <div className='row'>
             <div className='col s6 offset-s3'>
-                <h2>Welcome!</h2>
+                <h2>{texts.titles.auth}</h2>
 
                 <div className="card blue darken-1">
                     <div className="card-content white-text">
-                        <span className="card-title">Sign in:</span>
+                        <span className="card-title">{texts.titles.authCard}</span>
 
                         <div>
                             <div className="row">
@@ -59,7 +60,7 @@ export const AuthPage = () => {
                                         onChange={changeHandler} />
                                     <label
                                         className="label-white"
-                                        htmlFor="email">Email</label>
+                                        htmlFor="email">{texts.fields.email}</label>
                                 </div>
                             </div>
 
@@ -74,14 +75,14 @@ export const AuthPage = () => {
                                         onChange={changeHandler} />
                                     <label
                                         className="label-white"
-                                        htmlFor="password">Password</label>
+                                        htmlFor="password">{texts.fields.password}</label>
                                 </div>
                             </div>
 
                             <div className="row">
                                 <div>
                                     <Link className="orange-link" to="/reset">
-                                        Forgot password?
+                                        {texts.links.forgot}
                                     </Link>
                                 </div>
 
@@ -94,7 +95,7 @@ export const AuthPage = () => {
                                             name='rememberMe'
                                             checked={form.rememberMe}
                                             onChange={changeHandler} />
-                                        <span>Remember me</span>
+                                        <span>{texts.tips.remember}</span>
                                     </label>
                                 </div>
                             </div>
@@ -106,14 +107,14 @@ export const AuthPage = () => {
                             className='btn yellow darken-4 waves-effect waves-light'
                             disabled={loading}
                             onClick={authHandler}>
-                            Login
+                            {texts.buttons.login}
                         </button>
-                        
+
                         <button
                             className='btn grey waves-effect waves-light'
                             disabled={loading}
                             onClick={registerHandler}>
-                            Register
+                            {texts.buttons.register}
                         </button>
                     </div>
                 </div>

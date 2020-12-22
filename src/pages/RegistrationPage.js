@@ -3,6 +3,7 @@ import { AuthContext } from '../context/AuthContext';
 import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
 import { useHistory } from 'react-router-dom';
+import { texts } from '../texts';
 
 export const RegistrationPage = () => {
     const history = useHistory();
@@ -43,17 +44,17 @@ export const RegistrationPage = () => {
     return (
         <div className='row'>
             <div className='col s6 offset-s3'>
-                <h2>Registration</h2>
+                <h2>{texts.titles.registration}</h2>
                 <div className="card blue darken-1">
                     <div className="card-content white-text">
-                        <span className="card-title">Fill all fields:</span><br />
+                        <span className="card-title">{texts.titles.registrationCard}</span><br />
                         <div>
                             <div className="input-field">
                                 <label
                                     className="label-white"
-                                    htmlFor="name">Name</label>
+                                    htmlFor="name">{texts.fields.name}</label>
                                 <input
-                                    placeholder="Enter name"
+                                    placeholder={texts.placeholders.name}
                                     id="name"
                                     type="text"
                                     name="name"
@@ -64,9 +65,9 @@ export const RegistrationPage = () => {
                             <div className="input-field">
                                 <label
                                     className="label-white"
-                                    htmlFor="age">Age</label>
+                                    htmlFor="age">{texts.fields.age}</label>
                                 <input
-                                    placeholder="Enter age"
+                                    placeholder={texts.placeholders.age}
                                     id="age"
                                     type="text"
                                     name="age"
@@ -77,9 +78,9 @@ export const RegistrationPage = () => {
                             <div className="input-field">
                                 <label
                                     className="label-white"
-                                    htmlFor="email">Email</label>
+                                    htmlFor="email">{texts.fields.email}</label>
                                 <input
-                                    placeholder="Enter email"
+                                    placeholder={texts.placeholders.email}
                                     id="email"
                                     type="text"
                                     name="email"
@@ -90,9 +91,9 @@ export const RegistrationPage = () => {
                             <div className="input-field">
                                 <label
                                     className="label-white"
-                                    htmlFor="password">Password</label>
+                                    htmlFor="password">{texts.fields.password}</label>
                                 <input
-                                    placeholder="Enter password"
+                                    placeholder={texts.placeholders.password}
                                     id="password"
                                     type="password"
                                     name="password"
@@ -107,13 +108,13 @@ export const RegistrationPage = () => {
                             className='btn yellow darken-4 waves-effect waves-light'
                             disabled={loading}
                             onClick={registerHandler}>
-                            Save
+                            {texts.buttons.save}
                         </button>
                         <button
                             className='btn grey waves-effect waves-light'
                             disabled={loading}
                             onClick={cancelHandler}>
-                            Cancel
+                            {texts.buttons.cancel}
                         </button>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import { texts } from "../texts";
 
 const descendingComparator =
     (a, b, orderBy) => (b[orderBy] < a[orderBy]) ? -1 : (b[orderBy] > a[orderBy]) ? 1 : 0;
@@ -35,8 +36,8 @@ export default function SortedTableHeader(props) {
                                 {label}
                                 {orderBy === column.id
                                     ? order === 'desc'
-                                        ? <i className="tiny material-icons">arrow_drop_down</i>
-                                        : <i className="tiny material-icons">arrow_drop_up</i>
+                                        ? <i className="tiny material-icons">{texts.icons.arrowDown}</i>
+                                        : <i className="tiny material-icons">{texts.icons.arrowUp}</i>
                                     : null}
                             </div>
                         </th>
@@ -47,7 +48,7 @@ export default function SortedTableHeader(props) {
                         key='operations'
                         align='center'
                         className='pointer'>
-                        Operations
+                        {texts.fields.operations}
                     </th>
                     : null}
             </tr>

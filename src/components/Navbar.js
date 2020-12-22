@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import { texts } from '../texts';
 import { useHttp } from '../utils/http.hook';
 
 export const Navbar = () => {
@@ -20,11 +21,11 @@ export const Navbar = () => {
     return (
         <nav>
             <div className="nav-wrapper blue darken-1">
-                <a href="/" className="brand-logo">Simple-Node-Auth</a>
+                <a href="/" className="brand-logo">{texts.logo}</a>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
-                    <li><NavLink to='/users'>Users</NavLink></li>
-                    <li><NavLink to='/register'>Add user</NavLink></li>
-                    <li><a href="/logout" onClick={logoutHandler}>Logout</a></li>
+                    <li><NavLink to='/users'>{texts.links.users}</NavLink></li>
+                    <li><NavLink to='/register'>{texts.links.add}</NavLink></li>
+                    <li><a href="/logout" onClick={logoutHandler}>{texts.links.logout}</a></li>
                 </ul>
             </div>
         </nav>

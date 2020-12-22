@@ -4,6 +4,7 @@ import { useMessage } from '../utils/message.hook';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import SortedTableHeader, { getComparator, stableSort } from "./SortedTableHeader";
+import { texts } from '../texts';
 
 const columns = [
     { id: "name", label: "Name" },
@@ -59,7 +60,7 @@ export const UsersList = ({ users }) => {
                                     <Link
                                         className="button-link button-blue"
                                         to={`/edit/${user.id}`}>
-                                        Edit
+                                        {texts.links.edit}
                                     </Link>
 
                                     <button
@@ -68,7 +69,7 @@ export const UsersList = ({ users }) => {
                                             e.stopPropagation();
                                             deleteHandler(user.id);
                                         }}>
-                                        Delete
+                                        {texts.buttons.delete}
                                     </button>
                                 </td>
                             </tr>

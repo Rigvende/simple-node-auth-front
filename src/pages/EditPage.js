@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
 import { useHistory } from 'react-router-dom';
+import { texts } from '../texts';
 
 export const EditPage = () => {
     const id = useParams().id;
@@ -59,17 +60,17 @@ export const EditPage = () => {
     return (
         <div className='row'>
             <div className='col s6 offset-s3'>
-                <h2>Edition</h2>
+                <h2>{texts.titles.edit}</h2>
                 <div className="card blue darken-1">
                     <div className="card-content white-text">
-                        <span className="card-title">Change fields:</span><br />
+                        <span className="card-title">{texts.titles.editCard}</span><br />
                         <div>
                             <div className="input-field">
                                 <label
                                     className="label-white"
-                                    htmlFor="name">Name</label>
+                                    htmlFor="name">{texts.fields.name}</label>
                                 <input
-                                    placeholder="Enter name"
+                                    placeholder={texts.placeholders.name}
                                     id="name"
                                     type="text"
                                     name="name"
@@ -80,9 +81,9 @@ export const EditPage = () => {
                             <div className="input-field">
                                 <label
                                     className="label-white"
-                                    htmlFor="age">Age</label>
+                                    htmlFor="age">{texts.fields.age}</label>
                                 <input
-                                    placeholder="Enter age"
+                                    placeholder={texts.placeholders.age}
                                     id="age"
                                     type="text"
                                     name="age"
@@ -97,13 +98,13 @@ export const EditPage = () => {
                             className='btn yellow darken-4 waves-effect waves-light'
                             disabled={loading}
                             onClick={updateHandler}>
-                            Save
+                            {texts.buttons.save}
                         </button>
                         <button
                             className='btn grey waves-effect waves-light'
                             disabled={loading}
                             onClick={cancelHandler}>
-                            Cancel
+                            {texts.buttons.cancel}
                         </button>
                     </div>
                 </div>

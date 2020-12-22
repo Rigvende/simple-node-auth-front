@@ -8,6 +8,8 @@ import { useParams } from 'react-router-dom';
 import dateformat from 'dateformat';
 import { jsPDF } from 'jspdf';
 import { RingierLight } from '../context/customFonts';
+import { texts } from '../texts';
+import moment from 'moment';
 
 export const MainPage = () => {
     const componentRef = useRef();
@@ -55,14 +57,53 @@ export const MainPage = () => {
             setLimit(event.target.value);
             getUsers();
         }
-    }
+    };
 
-    const handlePrint = () => {
-        const pdf = new jsPDF();
-        buildPDF(pdf);
-        pdf.autoPrint();
-        pdf.output('dataurlnewwindow');
-    }
+    const getPrintableText = (userList) =>
+        `${texts.titles.print}\n
+        ${texts.titles.print_}\n
+        ${userList.join('\n\n')}\n
+        Created at: ${moment().format('DD.MM.YYYY | HH:mm')}
+        `;
+
+    const handlePrint = () => () => {
+        let userList = [];
+        buildUsers(userList);
+        const text = getPrintableText(userList);
+        const iframe = document.createElement('iframe');
+        iframe.setAttribute('title', 'BackupCodes');
+        iframe.setAttribute('id', 'BackupCodes');
+        iframe.setAttribute('style', 'height: 0px; width: 0px; position: absolute;');
+        document.body.appendChild(iframe);
+        const pri = iframe.contentWindow;
+        pri.document.open();
+        pri.document.write(`<pre style="font-size: 24px">${text}</pre>`);
+        pri.document.close();
+        pri.focus();
+        pri.print();
+    };
+
+    const buildUsers = (userList) => {
+        const codeBlock = componentRef.current;
+        let trs = codeBlock.querySelectorAll('tr');
+        let index = 0;
+        trs.forEach(tr => {
+            let data = tr.querySelectorAll('td');
+            if (data.length > 1) {
+                let name = data[0].innerHTML;
+                let age = data[1].innerHTML;
+                userList.push(`${index}: ${name}, ${age} years`);
+            }
+            index++;
+        });
+    };
+
+    // const handlePrint = () => {
+    //     const pdf = new jsPDF();
+    //     buildPDF(pdf);
+    //     pdf.autoPrint();
+    //     pdf.output('dataurlnewwindow');
+    // }
 
     const handleDownload = () => {
         const pdf = new jsPDF();
@@ -111,20 +152,20 @@ export const MainPage = () => {
             <div className='row' id='users-save' ref={componentRef} >
                 <div className='col s6 offset-s3' >
                     <h2 className='row-with-buttons'>
-                        Users
+                        {texts.titles.main}
 
                         <div>
                             <button
                                 className='btn yellow darken-4 waves-effect waves-light'
                                 disabled={loading}
                                 onClick={handleDownload}>
-                                Download
+                                {texts.buttons.download}
                             </button>
                             <button
                                 className='btn grey waves-effect waves-light'
                                 disabled={loading}
                                 onClick={handlePrint}>
-                                Print
+                                {texts.buttons.print}
                             </button>
                         </div>
                     </h2>

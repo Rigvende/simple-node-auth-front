@@ -17,7 +17,7 @@ export const useHttp = () => {
         async (url, method = 'GET', body = null, headers = {}) => {
             setLoading(true);
             try {
-                const URL = REACT_APP_SERVER_HOST + url;
+                const URL = `${REACT_APP_SERVER_HOST}${url}`;
                 const REQUEST = {
                     method, body: body ? JSON.stringify(body) : null,
                     headers: { 'Content-Type': 'application/json', 

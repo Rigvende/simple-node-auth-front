@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useMessage } from '../utils/message.hook';
 import { useHttp } from '../utils/http.hook';
 import { useHistory } from 'react-router-dom';
+import { texts } from '../texts';
 
 export const ResetPasswordPage = () => {
     const message = useMessage();
@@ -32,11 +33,11 @@ export const ResetPasswordPage = () => {
     return (
         <div className='row'>
             <div className='col s6 offset-s3'>
-                <h2>Reset password</h2>
+                <h2>{texts.titles.reset}</h2>
 
                 <div className="card blue darken-1">
                     <div className="card-content white-text">
-                        <span className="card-title">Enter registration email:</span>
+                        <span className="card-title">{texts.titles.resetCard}</span>
 
                         <div>
                             <div className="row">
@@ -49,13 +50,13 @@ export const ResetPasswordPage = () => {
                                         onChange={changeHandler} />
                                     <label
                                         className="label-white"
-                                        htmlFor="email">Email</label>
+                                        htmlFor="email">{texts.fields.email}</label>
                                 </div>
                             </div>
                         </div>
 
                         <div className="notification-white">
-                            After operation check your email in order to reset password
+                            {texts.tips.checkmail}
                         </div>
                     </div>
 
@@ -64,14 +65,14 @@ export const ResetPasswordPage = () => {
                             className='btn yellow darken-4 waves-effect waves-light'
                             disabled={loading}
                             onClick={resetHandler}>
-                            Submit
+                            {texts.buttons.submit}
                         </button>
 
                         <button
                             className='btn grey waves-effect waves-light'
                             disabled={loading}
                             onClick={cancelHandler}>
-                            Cancel
+                            {texts.buttons.cancel}
                         </button>
                     </div>
                 </div>
