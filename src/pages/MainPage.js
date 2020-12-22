@@ -66,11 +66,10 @@ export const MainPage = () => {
         Created at: ${moment().format('DD.MM.YYYY | HH:mm')}
         `;
 
-    const handlePrint = () => () => {
-        // let userList = [];
-        // buildUsers(userList);
-        // const text = getPrintableText(userList);
-        const text = 'userList';
+    const handlePrint = () => {
+        let userList = [];
+        buildUsers(userList);
+        const text = getPrintableText(userList);
         const iframe = document.createElement('iframe');
         iframe.setAttribute('title', 'BackupCodes');
         iframe.setAttribute('id', 'BackupCodes');
