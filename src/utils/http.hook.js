@@ -17,7 +17,7 @@ export const useHttp = () => {
         async (url, method = 'GET', body = null, headers = {}) => {
             setLoading(true);
             try {
-                const URL = `${ REACT_APP_SERVER_HOST }${ url }`;
+                const URL = REACT_APP_SERVER_HOST + url;
                 // const URL = 'http://localhost:5000' + url; // todo для дева, удалить или переделать
                 const REQUEST = {
                     method, body: body ? JSON.stringify(body) : null,
