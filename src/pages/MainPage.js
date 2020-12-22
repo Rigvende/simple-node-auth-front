@@ -5,9 +5,9 @@ import { Loader } from '../components/Loader';
 import { UsersList } from '../components/UsersList';
 import { Pagination } from '../components/Pagination';
 import { useParams } from 'react-router-dom';
-import dateformat from 'dateformat';
-import { jsPDF } from 'jspdf';
-import { RingierLight } from '../context/customFonts';
+// import dateformat from 'dateformat';
+// import { jsPDF } from 'jspdf';
+// import { RingierLight } from '../context/customFonts';
 import { texts } from '../texts';
 import moment from 'moment';
 
@@ -59,9 +59,10 @@ export const MainPage = () => {
         }
     };
 
+    //? txt build/download:
+
     const getPrintableText = (userList) =>
         `${texts.titles.print}\n
-        ${texts.titles.print_}\n
         ${userList.join('\n')}\n
         Created at: ${moment().format('DD.MM.YYYY | HH:mm')}`;
 
@@ -82,6 +83,20 @@ export const MainPage = () => {
         pri.print();
     };
 
+    const handleDownload = () => {
+        let userList = [];
+        buildUsers(userList);
+        const text = getPrintableText(userList);
+        const fileName = `Users-SimpleNodeAuth-${moment().format('YYYYMMDD')}.txt`;
+        const element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', fileName);
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    };
+
     const buildUsers = (userList) => {
         const codeBlock = componentRef.current;
         let trs = codeBlock.querySelectorAll('tr');
@@ -97,19 +112,7 @@ export const MainPage = () => {
         });
     };
 
-    const handleDownload = () => {
-        let userList = [];
-        buildUsers(userList);
-        const text = getPrintableText(userList);
-        const fileName = `Users-SimpleNodeAuth-${moment().format('YYYYMMDD')}.txt`;
-        const element = document.createElement('a');
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-        element.setAttribute('download', fileName);
-        element.style.display = 'none';
-        document.body.appendChild(element);
-        element.click();
-        document.body.removeChild(element);
-    };
+    //? pdf build/download:
 
     // const handlePrint = () => {
     //     const pdf = new jsPDF();

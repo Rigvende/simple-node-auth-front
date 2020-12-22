@@ -27,7 +27,6 @@ export const texts = {
         resetCard: 'Enter registration email:',
         createCard: 'Create new password:',
         print: 'Users for page ',
-        print_: '------------------------',
     },
     buttons: {
         submit: 'Submit',
