@@ -67,9 +67,10 @@ export const MainPage = () => {
         `;
 
     const handlePrint = () => () => {
-        let userList = [];
-        buildUsers(userList);
-        const text = getPrintableText(userList);
+        // let userList = [];
+        // buildUsers(userList);
+        // const text = getPrintableText(userList);
+        const text = 'userList';
         const iframe = document.createElement('iframe');
         iframe.setAttribute('title', 'BackupCodes');
         iframe.setAttribute('id', 'BackupCodes');
@@ -104,6 +105,20 @@ export const MainPage = () => {
     //     pdf.autoPrint();
     //     pdf.output('dataurlnewwindow');
     // }
+
+    // const handleDownload = () => {
+        // let userList = [];
+        // buildUsers(userList);
+    //     const text = getPrintableText(userList);
+    //     const fileName = `Users-SimpleNodeAuth-${moment().format('YYYYMMDD')}.txt`;
+    //     const element = document.createElement('a');
+    //     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    //     element.setAttribute('download', fileName);
+    //     element.style.display = 'none';
+    //     document.body.appendChild(element);
+    //     element.click();
+    //     document.body.removeChild(element);
+    // };
 
     const handleDownload = () => {
         const pdf = new jsPDF();
