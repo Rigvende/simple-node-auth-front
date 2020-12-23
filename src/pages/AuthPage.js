@@ -117,10 +117,10 @@ export const AuthPage = () => {
                             onClick={registerHandler}>
                             {texts.buttons.register}
                         </button>
-
-                        <Loader hidden={!loading}/>;
                     </div>
                 </div>
+
+                <Loader hidden={!loading}/>
             </div>
         </div>
     );
