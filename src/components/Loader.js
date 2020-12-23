@@ -2,9 +2,10 @@ import { checkPropTypes } from 'prop-types';
 import React from 'react';
 
 export const Loader = (props) => {
+    console.log(props.hidden);
 
     return (
-        <div className="loader" hidden={props.hidden}>
+        <div className={`${props.hidden ? 'hidden-loader' : 'loader'}`}>
             <div className="preloader-wrapper big active">
                 <div className="spinner-layer spinner-blue-only">
                     <div className="circle-clipper left">

@@ -136,3 +136,7 @@ input.yellow-input:focus {
 .pointer:hover {
     color: rgb(3, 151, 250);       
 }
+
+.hidden-loader {
+    display: none;
+}
