@@ -1,9 +1,7 @@
-import { checkPropTypes } from 'prop-types';
 import React from 'react';
 
 export const Loader = (props) => {
-    console.log(props.hidden);
-
+    
     return (
         <div className={`${props.hidden ? 'hidden-loader' : 'loader'}`}>
             <div className="preloader-wrapper big active">
