@@ -55,8 +55,8 @@ export const texts = {
     icons: {
         arrowDown: 'arrow_drop_down',
         arrowUp: 'arrow_drop_up',
-        chevronLeft: '',
-        chevronRight: '',
+        chevronLeft: 'chevron_left',
+        chevronRight: 'chevron_right',
     },
     selects: {
         page1: '3 per page',
