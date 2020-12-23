@@ -4,6 +4,7 @@ import { useMessage } from '../utils/message.hook';
 import { AuthContext } from '../context/AuthContext';
 import { useHistory, Link } from 'react-router-dom';
 import { texts } from '../texts';
+import { Loader } from '../components/Loader';
 
 export const AuthPage = () => {
     const history = useHistory();
@@ -116,6 +117,8 @@ export const AuthPage = () => {
                             onClick={registerHandler}>
                             {texts.buttons.register}
                         </button>
+
+                        <Loader hidden={!loading}/>;
                     </div>
                 </div>
             </div>
