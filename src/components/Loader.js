@@ -1,9 +1,10 @@
+import { checkPropTypes } from 'prop-types';
 import React from 'react';
 
-export const Loader = () => {
+export const Loader = (props) => {
 
     return (
-        <div className="loader">
+        <div className="loader" hidden={props.hidden}>
             <div className="preloader-wrapper big active">
                 <div className="spinner-layer spinner-blue-only">
                     <div className="circle-clipper left">
