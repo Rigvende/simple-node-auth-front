@@ -37,6 +37,8 @@ export const texts = {
         login: 'Login',
         register: 'Register',
         delete: 'Delete',
+        search: 'Search',
+        clear: 'Clear'
     },
     tips: {
         checkmail: 'After operation check your email in order to reset password',

@@ -7,6 +7,7 @@ import { Pagination } from '../components/Pagination';
 import { useParams } from 'react-router-dom';
 import { texts } from '../texts';
 import { handlePrint, handleDownload } from '../utils/saveUtil';
+import { Search } from '../components/Search';
 
 export const MainPage = () => {
     const componentRef = useRef();
@@ -18,6 +19,8 @@ export const MainPage = () => {
     const page = Number(useParams().page) || 1;
     const [limit, setLimit] = useState(5);
     const [currentLimit, setCurrentLimit] = useState(null);
+    const [searchedName, setSearchedName] = useState(null);
+    const [changedName, setChangedName] = useState(null);
 
     useEffect(() => {
         message(error);
@@ -25,9 +28,25 @@ export const MainPage = () => {
     }, [error, message, clearError]);
 
     const getUsers = useCallback(async () => {
+        console.log("cc" + searchedName)
         try {
+            let url = `/users?page=${page}&limit=${limit}`;
+
             if (page !== currentPage || limit !== currentLimit) {
-                const data = await request(`/users?page=${page}&limit=${limit}`);
+                const data = await request(url);
+                setUsers(data.data.users);
+                setCurrentPage(page);
+                setCurrentLimit(limit);
+                setPager({
+                    currentPage: page,
+                    length: Math.ceil(data.data.length / data.data.limit),
+                    limit
+                });
+            } else {
+                if (searchedName) {
+                    url += `&name=${searchedName}`;
+                }
+                const data = await request(url);
                 setUsers(data.data.users);
                 setCurrentPage(page);
                 setCurrentLimit(limit);
@@ -38,7 +57,7 @@ export const MainPage = () => {
                 });
             }
         } catch (err) { }
-    }, [request, currentPage, page, currentLimit, limit]);
+    }, [page, currentPage, limit, currentLimit, searchedName, request]);
 
     useEffect(() => {
         getUsers();
@@ -55,6 +74,22 @@ export const MainPage = () => {
             getUsers();
         }
     };   
+
+    const searchChangeHandler = (event) => {
+        event.preventDefault();
+        setChangedName(event.target.value);
+    }
+
+    const clearHandler = (event) => {
+        event.preventDefault();   
+        setChangedName('');
+    }
+
+    const searchHandler = (event) => {     
+        event.preventDefault();   
+        setSearchedName(changedName);
+        getUsers();
+    };
 
     const downloadHandler = (event) => {
         event.preventDefault();
@@ -88,6 +123,12 @@ export const MainPage = () => {
                             </button>
                         </div>
                     </h2>
+
+                    <Search 
+                        name={changedName} 
+                        searchHandler={searchHandler} 
+                        clearHandler={clearHandler}
+                        changeHandler={searchChangeHandler} />
 
                     {users ? !loading && <UsersList users={users} /> : null}
                 </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 
-export const Loader = (props) => {
-    
+export const Loader = (props) => {    
     return (
         <div className={`${props.hidden ? 'hidden-loader' : 'loader'}`}>
             <div className="preloader-wrapper big active">
