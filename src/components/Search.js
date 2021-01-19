@@ -1,9 +1,8 @@
 import React from 'react';
 import { texts } from '../texts';
 
-export const Search = (props) => {
-    const { clearHandler, changeHandler, searchHandler, name } = props;
-
+export const Search = React.memo(({ clearHandler, changeHandler, searchHandler, name }) => {
+    
     const clearSearch = (
         <button
             className='btn grey waves-effect waves-light'
@@ -30,4 +29,4 @@ export const Search = (props) => {
             {name ? clearSearch : null}
         </div>
     )
-};
+});

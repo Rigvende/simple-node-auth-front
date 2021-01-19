@@ -19,6 +19,7 @@ export const UsersList = ({ users }) => {
     const [orderBy, setOrderBy] = useState('name');
 
     const handleRequestSort = (event, property) => {
+        event.preventDefault();
         const isAsc = orderBy === property && order === 'asc';
         setOrder(isAsc ? 'desc' : 'asc');
         setOrderBy(property);
@@ -58,13 +59,13 @@ export const UsersList = ({ users }) => {
 
                                 <td>
                                     <Link
-                                        className="button-link button-blue"
+                                        className="button-link button-orange"
                                         to={`/edit/${user.id}`}>
                                         {texts.links.edit}
                                     </Link>
 
                                     <button
-                                        className="button-link button-orange"
+                                        className="button-link button-grey"
                                         onClick={(e) => {
                                             e.stopPropagation();
                                             deleteHandler(user.id);

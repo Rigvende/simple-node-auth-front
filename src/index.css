@@ -72,16 +72,19 @@ input.yellow-input:focus {
     width: 80px;
     height: 33px;
     background-color: rgb(231, 232, 233);
+    border-radius: 3px;
 }
 
-.button-orange:hover {
+.button-orange:hover, .button-orange:focus {
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
-    background: linear-gradient(to bottom, #faf1e8, #ebd6b5); 
+    background: #f57f17; 
+    color: #fff;
 }
 
-.button-blue:hover {
+.button-grey:hover, .button-grey:focus {
     box-shadow: 0 0 5px rgba(0,0,0,0.3); 
-    background: linear-gradient(to bottom, #e8f3fa, #b7d1e6); 
+    background: #9e9e9e; 
+    color: #fff;
 }
 
 .user {

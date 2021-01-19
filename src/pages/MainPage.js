@@ -14,41 +14,35 @@ export const MainPage = () => {
     const message = useMessage();
     const { loading, error, clearError, request } = useHttp();
     const [users, setUsers] = useState([]);
-    const [currentPage, setCurrentPage] = useState(null);
     const [pager, setPager] = useState({});
     const page = Number(useParams().page) || 1;
     const [limit, setLimit] = useState(5);
-    const [currentLimit, setCurrentLimit] = useState(null);
     const [searchedName, setSearchedName] = useState(null);
     const [changedName, setChangedName] = useState(null);   
 
     useEffect(() => {
         message(error);
         clearError();
-    }, [error, message, clearError]);
+    }, [error, message, clearError]);   
 
-    const getUsers = useCallback(async () => {
-        try {
-            let url = `/users?page=${page}&limit=${limit}`;
-            if (searchedName) {
-                url += `&name=${searchedName}`;
-            }    
-
-            const data = await request(url);
-            setUsers(data.data.users);
-
-            if (page !== currentPage || limit !== currentLimit) {
-                setCurrentPage(page);
-                setCurrentLimit(limit);
-            }
-            
-            setPager({
-                currentPage: page,
-                length: Math.ceil(data.data.length / data.data.limit),
-                limit
-            });            
-        } catch (err) { }
-    }, [page, currentPage, limit, currentLimit, searchedName, request]);
+    const getUsers = useCallback(
+        async () => {
+            try {
+                let url = `/users?page=${page}&limit=${limit}`;
+                if (searchedName) {
+                    url += `&name=${searchedName}`;
+                }    
+    
+                const data = await request(url);
+                setUsers(data.data.users);
+                
+                setPager({
+                    currentPage: page,
+                    length: Math.ceil(data.data.length / data.data.limit),
+                    limit
+                });            
+            } catch (err) { }
+        }, [page, limit, searchedName, request]);
 
     useEffect(() => {
         getUsers();

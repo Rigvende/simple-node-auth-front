@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { texts } from '../texts';
 
-export const Pagination = ({ pager, handler }) => {
+export const Pagination = React.memo(({ pager, handler }) => {
     const { length, currentPage, limit } = pager;
 
     return (
@@ -58,4 +58,4 @@ export const Pagination = ({ pager, handler }) => {
             }
         </>
     );
-};
+});
