@@ -20,7 +20,7 @@ export const MainPage = () => {
     const [limit, setLimit] = useState(5);
     const [currentLimit, setCurrentLimit] = useState(null);
     const [searchedName, setSearchedName] = useState(null);
-    const [changedName, setChangedName] = useState(null);
+    const [changedName, setChangedName] = useState(null);   
 
     useEffect(() => {
         message(error);
@@ -28,34 +28,25 @@ export const MainPage = () => {
     }, [error, message, clearError]);
 
     const getUsers = useCallback(async () => {
-        console.log("cc" + searchedName)
         try {
             let url = `/users?page=${page}&limit=${limit}`;
+            if (searchedName) {
+                url += `&name=${searchedName}`;
+            }    
+
+            const data = await request(url);
+            setUsers(data.data.users);
 
             if (page !== currentPage || limit !== currentLimit) {
-                const data = await request(url);
-                setUsers(data.data.users);
                 setCurrentPage(page);
                 setCurrentLimit(limit);
-                setPager({
-                    currentPage: page,
-                    length: Math.ceil(data.data.length / data.data.limit),
-                    limit
-                });
-            } else {
-                if (searchedName) {
-                    url += `&name=${searchedName}`;
-                }
-                const data = await request(url);
-                setUsers(data.data.users);
-                setCurrentPage(page);
-                setCurrentLimit(limit);
-                setPager({
-                    currentPage: page,
-                    length: Math.ceil(data.data.length / data.data.limit),
-                    limit
-                });
             }
+            
+            setPager({
+                currentPage: page,
+                length: Math.ceil(data.data.length / data.data.limit),
+                limit
+            });            
         } catch (err) { }
     }, [page, currentPage, limit, currentLimit, searchedName, request]);
 
@@ -68,36 +59,29 @@ export const MainPage = () => {
     }
 
     const selectHandler = (event) => {
-        event.preventDefault();
         if (event.target.value !== limit) {
             setLimit(event.target.value);
-            getUsers();
         }
     };   
 
     const searchChangeHandler = (event) => {
-        event.preventDefault();
         setChangedName(event.target.value);
     }
 
-    const clearHandler = (event) => {
-        event.preventDefault();   
+    const clearHandler = () => {  
         setChangedName('');
+        setSearchedName(null);
     }
 
-    const searchHandler = (event) => {     
-        event.preventDefault();   
+    const searchHandler = () => {      
         setSearchedName(changedName);
-        getUsers();
     };
 
-    const downloadHandler = (event) => {
-        event.preventDefault();
+    const downloadHandler = () => {
         handleDownload(page, componentRef);
     };
 
-    const printHandler = (event) => {
-        event.preventDefault();
+    const printHandler = () => {
         handlePrint(page, componentRef);
     };
 
