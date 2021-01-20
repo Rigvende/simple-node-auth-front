@@ -18,7 +18,7 @@ export const MainPage = () => {
     const page = Number(useParams().page) || 1;
     const [limit, setLimit] = useState(5);
     const [searchedName, setSearchedName] = useState(null);
-    const [changedName, setChangedName] = useState(null);   
+    const [changedName, setChangedName] = useState('');   
 
     useEffect(() => {
         message(error);
