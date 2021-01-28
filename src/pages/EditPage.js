@@ -60,7 +60,7 @@ export const EditPage = () => {
 
     return (
         <div className='row'>
-            <CommonHelmet />
+            <CommonHelmet title='Edit'/>
             
             <div className='col s6 offset-s3'>
                 <h2>{texts.titles.edit}</h2>

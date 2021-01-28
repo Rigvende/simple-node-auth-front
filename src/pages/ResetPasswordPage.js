@@ -33,7 +33,7 @@ export const ResetPasswordPage = () => {
 
     return (
         <div className='row'>
-            <CommonHelmet />
+            <CommonHelmet title='Reset password'/>
             
             <div className='col s6 offset-s3'>
                 <h2>{texts.titles.reset}</h2>

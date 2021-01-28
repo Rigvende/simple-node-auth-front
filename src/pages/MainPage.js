@@ -82,7 +82,7 @@ export const MainPage = () => {
 
     return (
         <div >
-            <CommonHelmet />
+            <CommonHelmet title='Users' />
             
             <div className='row' id='users-save' ref={componentRef} >
                 <div className='col s6 offset-s3' >

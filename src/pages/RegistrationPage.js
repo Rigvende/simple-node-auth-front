@@ -44,7 +44,7 @@ export const RegistrationPage = () => {
 
     return (
         <div className='row'>
-            <CommonHelmet />
+            <CommonHelmet title='Register'/>
             
             <div className='col s6 offset-s3'>
                 <h2>{texts.titles.registration}</h2>

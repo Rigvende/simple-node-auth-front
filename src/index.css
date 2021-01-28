@@ -143,3 +143,15 @@ input.yellow-input:focus {
 .hidden-loader {
     display: none;
 }
+
+.logo {
+    margin: 8px 8px 8px 20px;
+}
+
+.logo-welcome {
+    margin-left: 10px;
+}
+
+.navbar {
+    margin-right: 10px;
+}
