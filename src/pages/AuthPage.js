@@ -5,6 +5,7 @@ import { AuthContext } from '../context/AuthContext';
 import { useHistory, Link } from 'react-router-dom';
 import { texts } from '../texts';
 import { Loader } from '../components/Loader';
+import CommonHelmet from '../components/Helmet';
 
 export const AuthPage = () => {
     const history = useHistory();
@@ -43,6 +44,8 @@ export const AuthPage = () => {
 
     return (
         <div className='row'>
+            <CommonHelmet />
+            
             <div className='col s6 offset-s3'>
                 <h2>{texts.titles.auth}</h2>
 

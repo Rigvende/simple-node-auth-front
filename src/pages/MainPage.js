@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import { texts } from '../texts';
 import { handlePrint, handleDownload } from '../utils/saveUtil';
 import { Search } from '../components/Search';
+import CommonHelmet from '../components/Helmet';
 
 export const MainPage = () => {
     const componentRef = useRef();
@@ -81,6 +82,8 @@ export const MainPage = () => {
 
     return (
         <div >
+            <CommonHelmet />
+            
             <div className='row' id='users-save' ref={componentRef} >
                 <div className='col s6 offset-s3' >
                     <h2 className='row-with-buttons'>

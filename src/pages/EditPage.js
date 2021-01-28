@@ -4,6 +4,7 @@ import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
 import { useHistory } from 'react-router-dom';
 import { texts } from '../texts';
+import CommonHelmet from '../components/Helmet';
 
 export const EditPage = () => {
     const id = useParams().id;
@@ -59,6 +60,8 @@ export const EditPage = () => {
 
     return (
         <div className='row'>
+            <CommonHelmet />
+            
             <div className='col s6 offset-s3'>
                 <h2>{texts.titles.edit}</h2>
                 <div className="card blue darken-1">

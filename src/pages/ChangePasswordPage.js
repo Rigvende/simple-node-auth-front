@@ -4,6 +4,7 @@ import { useMessage } from '../utils/message.hook';
 import { useHttp } from '../utils/http.hook';
 import { useHistory, useParams } from 'react-router-dom';
 import { texts } from '../texts';
+import CommonHelmet from '../components/Helmet';
 
 export const ChangePasswordPage = () => {
     const message = useMessage();
@@ -41,6 +42,8 @@ export const ChangePasswordPage = () => {
 
     return (
         <div className='row'>
+            <CommonHelmet />
+            
             <div className='col s6 offset-s3'>
                 <h2>{texts.titles.reset}</h2>
 
