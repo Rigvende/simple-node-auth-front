@@ -64,6 +64,10 @@ input.yellow-input:focus {
     padding-top: 2rem;
 }
 
+.button-right {
+    text-align: right;
+}
+
 .button-link {
     border: none;
     display: inline-block;
@@ -111,11 +115,11 @@ input.yellow-input:focus {
 }
 
 .pagination li.disabled a {
-    color: #999;
+    color:#9e9e9e;
 }
 
 .pagination li.disabled a:hover {
-    color: #999;
+    color: #9e9e9e;
 }
 
 .pagination li a {
@@ -130,7 +134,7 @@ input.yellow-input:focus {
 
 .current-page {
     color:rgb(3, 151, 250);
-    border: 1px solid #999;
+    border: 1px solid #9e9e9e;
     cursor: default;
     display: inline-block;
     font-size: 1.2rem;
@@ -177,7 +181,7 @@ input.yellow-input:focus {
 }
 
 .pointer:hover {
-    color: rgb(3, 151, 250);       
+    color:rgb(3, 151, 250)
 }
 
 .hidden-loader {
@@ -194,4 +198,16 @@ input.yellow-input:focus {
 
 .navbar {
     margin-right: 10px;
+}
+
+td, th {
+    border-radius: 0;
+}
+
+thead {
+    background: rgb(231, 232, 233);
+}
+
+table {
+    margin-top: 10px;
 }

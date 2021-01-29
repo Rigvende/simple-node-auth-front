@@ -12,7 +12,7 @@ export const Search = React.memo(({ clearHandler, changeHandler, searchHandler, 
     );
     
     return (
-        <div>
+        <div className='button-right'>
             <input 
                 name="name" 
                 value={name}
@@ -20,7 +20,7 @@ export const Search = React.memo(({ clearHandler, changeHandler, searchHandler, 
                 placeholder="Search by name" 
                 onChange={changeHandler} />
 
-            <button
+            <button 
                 className='btn yellow darken-4 waves-effect waves-light'
                 onClick={searchHandler}>
                 {texts.buttons.search}

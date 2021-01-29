@@ -25,12 +25,12 @@ export default function SortedTableHeader(props) {
 
     return (
         <thead>
-            <tr>
+            <tr >
                 {columns.map(column => {
                     let label = column.label;
                     return (
                         <th className='pointer' key={column.id}>                            
-                            <div
+                            <div 
                                 direction={orderBy === column.id ? order : 'asc'}
                                 onClick={createSortHandler(column.id)}>
                                 {label}
