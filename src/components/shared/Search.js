@@ -1,5 +1,5 @@
 import React from 'react';
-import { texts } from '../../texts';
+import { texts } from '../../context/texts';
 
 export const Search = React.memo(({ clearHandler, changeHandler, searchHandler, name }) => {
     

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { texts } from '../../texts';
+import { texts } from '../../context/texts';
 
 export const Pagination = React.memo(({ pager }) => {
     const { length, currentPage } = pager;

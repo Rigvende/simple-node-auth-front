@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { texts } from "../../texts";
+import { texts } from "../../context/texts";
 
 const descendingComparator =
     (a, b, orderBy) => (b[orderBy] < a[orderBy]) ? -1 : (b[orderBy] > a[orderBy]) ? 1 : 0;

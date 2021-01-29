@@ -2,7 +2,7 @@ import dateformat from 'dateformat';
 import { jsPDF } from 'jspdf';
 import moment from 'moment';
 import { RingierLight } from '../context/customFonts';
-import { texts } from '../texts';
+import { texts } from '../context/texts';
 
 //? txt print:
 export const handlePrint = (page, ref) => {

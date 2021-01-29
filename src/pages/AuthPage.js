@@ -3,7 +3,7 @@ import { useHistory, Link } from 'react-router-dom';
 import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
 import { AuthContext } from '../context/AuthContext';
-import { texts } from '../texts';
+import { texts } from '../context/texts';
 import { Loader } from '../components/shared/Loader';
 import CommonHelmet from '../components/shared/Helmet';
 

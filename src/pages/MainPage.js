@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
 import { UsersList } from '../components/users/UsersList';
-import { texts } from '../texts';
+import { texts } from '../context/texts';
 import { handlePrint, handleDownload } from '../utils/saveUtil';
 import { Search } from '../components/shared/Search';
 import CommonHelmet from '../components/shared/Helmet';

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import { texts } from '../../texts';
+import { texts } from '../../context/texts';
 import { useHttp } from '../../utils/http.hook';
 
 export const Navbar = () => {

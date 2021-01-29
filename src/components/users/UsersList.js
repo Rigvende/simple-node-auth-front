@@ -2,7 +2,7 @@ import React, { useEffect, useCallback, useState } from 'react';
 import { useHttp } from '../../utils/http.hook';
 import { useMessage } from '../../utils/message.hook';
 import SortedTableHeader from "../shared/SortedTableHeader";
-import { texts } from '../../texts';
+import { texts } from '../../context/texts';
 import { Pagination } from '../shared/Pagination';
 import { Loader } from '../shared/Loader';
 import { UsersTableBody } from '../users/UsersTableBody';

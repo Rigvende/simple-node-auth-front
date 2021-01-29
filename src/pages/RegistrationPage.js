@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
-import { texts } from '../texts';
+import { texts } from '../context/texts';
 import CommonHelmet from '../components/shared/Helmet';
 
 export const RegistrationPage = () => {

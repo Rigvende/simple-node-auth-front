@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useMessage } from '../utils/message.hook';
 import { useHttp } from '../utils/http.hook';
-import { texts } from '../texts';
+import { texts } from '../context/texts';
 import CommonHelmet from '../components/shared/Helmet';
 
 export const ResetPasswordPage = () => {
