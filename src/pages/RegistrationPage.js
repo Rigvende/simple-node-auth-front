@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
-import { useHistory } from 'react-router-dom';
 import { texts } from '../texts';
-import CommonHelmet from '../components/Helmet';
+import CommonHelmet from '../components/shared/Helmet';
 
 export const RegistrationPage = () => {
     const history = useHistory();

@@ -1,74 +1,36 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
-import { Loader } from '../components/Loader';
-import { UsersList } from '../components/UsersList';
-import { Pagination } from '../components/Pagination';
-import { useParams } from 'react-router-dom';
+import { UsersList } from '../components/users/UsersList';
 import { texts } from '../texts';
 import { handlePrint, handleDownload } from '../utils/saveUtil';
-import { Search } from '../components/Search';
-import CommonHelmet from '../components/Helmet';
+import { Search } from '../components/shared/Search';
+import CommonHelmet from '../components/shared/Helmet';
 
 export const MainPage = () => {
     const componentRef = useRef();
     const message = useMessage();
-    const { loading, error, clearError, request } = useHttp();
-    const [users, setUsers] = useState([]);
-    const [pager, setPager] = useState({});
+    const { loading, error, clearError } = useHttp();
     const page = Number(useParams().page) || 1;
-    const [limit, setLimit] = useState(5);
     const [searchedName, setSearchedName] = useState(null);
-    const [changedName, setChangedName] = useState('');   
+    const [changedName, setChangedName] = useState('');
 
     useEffect(() => {
         message(error);
         clearError();
-    }, [error, message, clearError]);   
-
-    const getUsers = useCallback(
-        async () => {
-            try {
-                let url = `/users?page=${page}&limit=${limit}`;
-                if (searchedName) {
-                    url += `&name=${searchedName}`;
-                }    
-    
-                const data = await request(url);
-                setUsers(data.data.users);
-                
-                setPager({
-                    currentPage: page,
-                    length: Math.ceil(data.data.length / data.data.limit),
-                    limit
-                });            
-            } catch (err) { }
-        }, [page, limit, searchedName, request]);
-
-    useEffect(() => {
-        getUsers();
-    }, [getUsers]);
-
-    if (loading) {
-        return <Loader />;
-    }
-
-    const selectHandler = (event) => {
-        if (event.target.value !== limit) {
-            setLimit(event.target.value);
-        }
-    };   
+    }, [error, message, clearError]);
 
     const searchChangeHandler = (event) => {
         setChangedName(event.target.value);
     }
 
-    const clearHandler = () => {  
+    const clearHandler = () => {
         setChangedName('');
         setSearchedName(null);
     }
 
-    const searchHandler = () => {      
+    const searchHandler = () => {
         setSearchedName(changedName);
     };
 
@@ -83,13 +45,13 @@ export const MainPage = () => {
     return (
         <div >
             <CommonHelmet title='Users' />
-            
+
             <div className='row' id='users-save' ref={componentRef} >
                 <div className='col s6 offset-s3' >
                     <h2 className='row-with-buttons'>
                         {texts.titles.main}
 
-                        <div>
+                        <div className='m-left'>
                             <button
                                 className='btn yellow darken-4 waves-effect waves-light'
                                 disabled={loading}
@@ -105,19 +67,13 @@ export const MainPage = () => {
                         </div>
                     </h2>
 
-                    <Search 
-                        name={changedName} 
-                        searchHandler={searchHandler} 
+                    <Search
+                        name={changedName}
+                        searchHandler={searchHandler}
                         clearHandler={clearHandler}
                         changeHandler={searchChangeHandler} />
 
-                    {users ? !loading && <UsersList users={users} /> : null}
-                </div>
-            </div>
-
-            <div className="row">
-                <div className='col s6 offset-s3'>
-                    <Pagination pager={pager} handler={selectHandler} />
+                    <UsersList page={page} searchedName={searchedName} />
                 </div>
             </div>
         </div>

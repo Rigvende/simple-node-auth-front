@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useHistory, Link } from 'react-router-dom';
 import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
 import { AuthContext } from '../context/AuthContext';
-import { useHistory, Link } from 'react-router-dom';
 import { texts } from '../texts';
-import { Loader } from '../components/Loader';
-import CommonHelmet from '../components/Helmet';
+import { Loader } from '../components/shared/Loader';
+import CommonHelmet from '../components/shared/Helmet';
 
 export const AuthPage = () => {
     const history = useHistory();

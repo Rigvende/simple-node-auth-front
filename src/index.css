@@ -4,6 +4,10 @@
     margin-right: 10px;
 }
 
+.m-left {
+    margin-left: 20px;
+}
+
 .row {
     margin-bottom: 0px;
     padding-left: 24px;
@@ -11,7 +15,7 @@
 }
 
 .card{
-    min-width: 240px;
+    min-width: 300px;
 }
 
 .card-title {
@@ -92,12 +96,46 @@ input.yellow-input:focus {
 }
 
 .select-limit  {
-    display: block; 
-    width: auto; 
+    display: flex; 
 }
+
+.select-container {
+    display: flex;
+    justify-content: center;
+}
+
 .pagination {
-    min-width: 300px;
-    width: 400px;
+    display:block;
+    text-align: center;
+    min-width: 240px;
+}
+
+.pagination li.disabled a {
+    color: #999;
+}
+
+.pagination li.disabled a:hover {
+    color: #999;
+}
+
+.pagination li a {
+    color: rgb(3, 151, 250);
+    padding: 0 5px;
+}
+
+.pagination li a:hover {
+    color: #555;
+    padding: 0 5px;
+}
+
+.current-page {
+    color:rgb(3, 151, 250);
+    border: 1px solid #999;
+    cursor: default;
+    display: inline-block;
+    font-size: 1.2rem;
+    padding: 0 10px;
+    line-height: 27px;
 }
 
 .row-with-buttons {

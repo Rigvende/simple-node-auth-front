@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useMessage } from '../utils/message.hook';
 import { useHttp } from '../utils/http.hook';
-import { useHistory } from 'react-router-dom';
 import { texts } from '../texts';
-import CommonHelmet from '../components/Helmet';
+import CommonHelmet from '../components/shared/Helmet';
 
 export const ResetPasswordPage = () => {
     const message = useMessage();

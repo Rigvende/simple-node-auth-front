@@ -3,8 +3,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { useRoutes } from './routes';
 import { useAuth } from './utils/auth.hook';
 import { AuthContext } from './context/AuthContext';
-import { Navbar } from './components/Navbar';
-import { Loader } from './components/Loader';
+import { Navbar } from './components/shared/Navbar';
+import { Loader } from './components/shared/Loader';
 import 'materialize-css';
 
 function App() {

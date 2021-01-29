@@ -1,7 +1,7 @@
 import { useCallback, useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useAuth } from './auth.hook';
 import { AuthContext } from '../context/AuthContext';
-import { useHistory } from 'react-router-dom';
 
 export const useHttp = () => {
     const [loading, setLoading] = useState(false);

@@ -43,6 +43,7 @@ export const texts = {
     tips: {
         checkmail: 'After operation check your email in order to reset password',
         remember: 'Remember me',
+        noUsers: 'Users list is not available...'
     },
     links:{
         forgot: 'Forgot password?',

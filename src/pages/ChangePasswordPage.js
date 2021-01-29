@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { useMessage } from '../utils/message.hook';
 import { useHttp } from '../utils/http.hook';
-import { useHistory, useParams } from 'react-router-dom';
 import { texts } from '../texts';
-import CommonHelmet from '../components/Helmet';
+import CommonHelmet from '../components/shared/Helmet';
 
 export const ChangePasswordPage = () => {
     const message = useMessage();

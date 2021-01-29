@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useHttp } from '../utils/http.hook';
 import { useMessage } from '../utils/message.hook';
-import { useHistory } from 'react-router-dom';
 import { texts } from '../texts';
-import CommonHelmet from '../components/Helmet';
+import CommonHelmet from '../components/shared/Helmet';
 
 export const EditPage = () => {
     const id = useParams().id;
