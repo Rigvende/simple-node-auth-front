@@ -60,6 +60,7 @@ export const texts = {
         arrowUp: 'arrow_drop_up',
         chevronLeft: 'chevron_left',
         chevronRight: 'chevron_right',
+        infoOutline: 'info_outline',
     },
     selects: {
         page1: '3 per page',

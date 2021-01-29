@@ -59,7 +59,8 @@ export const ResetPasswordPage = () => {
                         </div>
 
                         <div className="notification-white">
-                            {texts.tips.checkmail}
+                            <i className="material-icons">{texts.icons.infoOutline}</i>
+                            <div className='logo-margin'>{texts.tips.checkmail}</div>
                         </div>
                     </div>
 

@@ -47,7 +47,7 @@ export const AuthPage = () => {
             <CommonHelmet title="Login"/>
             
             <div className='col s6 offset-s3'>
-                <h2>{texts.titles.auth}<img src='/logo64.png' alt='logo' className="logo-welcome" width='50px' height='50px' /></h2>
+                <h2>{texts.titles.auth}<img src='/logo64.png' alt='logo' className="logo-margin" width='50px' height='50px' /></h2>
 
                 <div className="card blue darken-1">
                     <div className="card-content white-text">

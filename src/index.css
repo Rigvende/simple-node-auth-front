@@ -163,6 +163,8 @@ input.yellow-input:focus {
 .notification-white {
     padding-top: 30px;
     font-size: 14px;
+    display: flex;
+    vertical-align: center;
 }
 
 .orange-link {
@@ -186,7 +188,7 @@ input.yellow-input:focus {
     margin: 8px 8px 8px 20px;
 }
 
-.logo-welcome {
+.logo-margin {
     margin-left: 10px;
 }
 
