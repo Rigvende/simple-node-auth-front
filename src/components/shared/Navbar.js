@@ -8,7 +8,7 @@ export const Navbar = () => {
     const history = useHistory();
     const { logout } = useContext(AuthContext);
     const { request } = useHttp();
-
+    
     const logoutHandler = async (event) => {
         event.preventDefault();
         try {
@@ -21,11 +21,12 @@ export const Navbar = () => {
     return (
         <nav>
             <div className="nav-wrapper blue darken-1">
-                <img src='/logo64.png' alt='logo' className="logo" width='45px' height='45px' />
+                <img src={texts.defaultLogo} alt='logo' className="logo" width='45px' height='45px' />
                 <a href="/" className="brand-logo">{texts.logo}</a>
                 <ul id="nav-mobile" className="right hide-on-med-and-down navbar">
                     <li><NavLink to='/users'>{texts.links.users}</NavLink></li>
                     <li><NavLink to='/register'>{texts.links.add}</NavLink></li>
+                    <li><NavLink to='/cats'>{texts.links.cats}</NavLink></li>
                     <li><a href="/logout" onClick={logoutHandler}>{texts.links.logout}</a></li>
                 </ul>
             </div>

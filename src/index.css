@@ -24,6 +24,7 @@
 
 .card-action {
     margin-top: 15px!important;
+    text-align: center;
 }
 
 nav .brand-logo {
@@ -210,4 +211,9 @@ thead {
 
 table {
     margin-top: 10px;
+}
+
+.cat-img {    
+    max-width: 100%;   
+    max-height: 500px; 
 }

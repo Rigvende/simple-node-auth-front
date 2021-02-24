@@ -1,5 +1,8 @@
 export const texts = {
     logo: 'Simple-Node-Auth',
+    defaultLogo: '/logo64.png',
+    defaultCat: '/defaultCat.png',
+    catUrl: 'https://api.thecatapi.com/v1/images/search',
     fields: {
         email: 'Email',
         password: 'Password',
@@ -27,6 +30,7 @@ export const texts = {
         resetCard: 'Enter registration email:',
         createCard: 'Create new password:',
         print: 'Users for page ',
+        randomCat: 'Random Cat',
     },
     buttons: {
         submit: 'Submit',
@@ -38,7 +42,8 @@ export const texts = {
         register: 'Register',
         delete: 'Delete',
         search: 'Search',
-        clear: 'Clear'
+        clear: 'Clear',
+        cat: 'Generate',
     },
     tips: {
         checkmail: 'After operation check your email in order to reset password',
@@ -54,6 +59,7 @@ export const texts = {
         users: 'Users',
         add: 'Add user',
         logout: 'Logout',
+        cats: 'Cats'
     },
     icons: {
         arrowDown: 'arrow_drop_down',
