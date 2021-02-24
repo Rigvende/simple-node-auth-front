@@ -2,6 +2,7 @@
 
 .btn {
     margin-right: 10px;
+    margin-top: 3px;
 }
 
 .m-left {
@@ -191,6 +192,8 @@ input.yellow-input:focus {
 
 .logo {
     margin: 8px 8px 8px 20px;
+    width: 45px;
+    height: 45px;
 }
 
 .logo-margin {

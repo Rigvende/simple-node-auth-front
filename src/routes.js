@@ -15,9 +15,6 @@ export const useRoutes = isAuthenticated => {
                 <Route path='/users/:page?' exact>
                     <MainPage />
                 </Route>
-                <Route path='/register' exact>
-                    <RegistrationPage />
-                </Route>
                 <Route path='/edit/:id' exact>
                     <EditPage/>
                 </Route>
