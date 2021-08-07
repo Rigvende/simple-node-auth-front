@@ -10,8 +10,8 @@ export const handlePrint = (page, ref) => {
     buildUsers(userList, ref);
     const text = getPrintableText(userList, page);
     const iframe = document.createElement('iframe');
-    iframe.setAttribute('title', 'BackupCodes');
-    iframe.setAttribute('id', 'BackupCodes');
+    iframe.setAttribute('title', 'Users List');
+    iframe.setAttribute('id', 'UsersList');
     iframe.setAttribute('style', 'height: 0px; width: 0px; position: absolute;');
     document.body.appendChild(iframe);
     const pri = iframe.contentWindow;
@@ -75,9 +75,9 @@ const buildUsers = (userList, ref) => {
 };
 
 const buildPDF = (pdf, page, ref) => {
-    pdf.addFileToVFS('RingierLight.ttf', RingierLight);
-    pdf.addFont('RingierLight.ttf', 'Ringier Light', 'normal', 'StandardEncoding');
-    pdf.setFont('Ringier Light');
+    pdf.addFileToVFS('GowunDodum-Regular.ttf', GowunDodumRegular);
+    pdf.addFont('GowunDodum-Regular.ttf', 'Gowun Dodum Regular', 'normal', 'StandardEncoding');
+    pdf.setFont('Gowun Dodum Regular');
     pdf.setTextColor(50, 50, 50);
     const codeBlock = ref.current;
     let users = codeBlock.querySelectorAll('tr');
