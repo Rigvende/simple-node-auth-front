@@ -1,7 +1,7 @@
 import dateformat from 'dateformat';
 import { jsPDF } from 'jspdf';
 import moment from 'moment';
-import { RingierLight } from '../context/customFonts';
+import { GowunDodumRegular } from '../context/customFonts';
 import { texts } from '../context/texts';
 
 //? txt print:
